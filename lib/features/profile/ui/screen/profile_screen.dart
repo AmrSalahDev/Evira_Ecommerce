@@ -1,9 +1,18 @@
+import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/gen/assets.gen.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
+import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
+import 'package:evira_e_commerce/features/profile/ui/bloc/profile_info_bloc.dart';
+import 'package:evira_e_commerce/features/profile/ui/widgets/user_image_part.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
+import 'package:evira_e_commerce/shared/widgets/shimmer_box.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:my_flutter_toolkit/core/extensions/context_extensions.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -36,7 +45,181 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 
   @override
+  void initState() {
+    super.initState();
+    context.read<ProfileInfoBloc>().add(GetProfileInfoEvent());
+  }
+
+  @override
   Widget buildBody(BuildContext context) {
-    return Column();
+    return SingleChildScrollView(
+      clipBehavior: Clip.none,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const UserImagePart(),
+            SizedBox(height: 20.h),
+            const UserNameAndPhonePart(),
+            SizedBox(height: 20.h),
+            Divider(color: context.dividerColor),
+            SizedBox(height: 10.h),
+            CustomListTile(
+              title: EviraLang.of(context).editProfile,
+              svgPath: Assets.icons.userOutline.path,
+              onTap: () {},
+            ),
+            CustomListTile(
+              title: EviraLang.of(context).address,
+              svgPath: Assets.icons.locationOutline.path,
+              onTap: () {},
+            ),
+            CustomListTile(
+              title: EviraLang.of(context).notification,
+              svgPath: Assets.icons.notificationOutline.path,
+              onTap: () {},
+            ),
+            CustomListTile(
+              title: EviraLang.of(context).payment,
+              svgPath: Assets.icons.walletOutline.path,
+              onTap: () {},
+            ),
+            CustomListTile(
+              title: EviraLang.of(context).security,
+              svgPath: Assets.icons.securityOutline.path,
+              onTap: () {},
+            ),
+            CustomListTile(
+              title: EviraLang.of(context).language,
+              svgPath: Assets.icons.languageOutline.path,
+              onTap: () {},
+            ),
+            CustomListTile(
+              title: EviraLang.of(context).darkMode,
+              svgPath: Assets.icons.darkmodeOutline.path,
+              onTap: () {},
+            ),
+            CustomListTile(
+              title: EviraLang.of(context).privacyPolicy,
+              svgPath: Assets.icons.privacyPolicyOutline.path,
+              onTap: () {},
+            ),
+            CustomListTile(
+              title: EviraLang.of(context).helpCenter,
+              svgPath: Assets.icons.helpCenterOutline.path,
+              onTap: () {},
+            ),
+            CustomListTile(
+              title: EviraLang.of(context).inviteFriends,
+              svgPath: Assets.icons.inviteFriendsOutline.path,
+              onTap: () {},
+            ),
+            CustomListTile(
+              title: EviraLang.of(context).logout,
+              svgPath: Assets.icons.logoutOutline.path,
+              color: Colors.redAccent,
+              showArrow: false,
+              onTap: () {},
+            ),
+            SizedBox(height: 50.h),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CustomListTile extends StatelessWidget {
+  final String title;
+  final String svgPath;
+  final Color? color;
+  final bool showArrow;
+  final void Function()? onTap;
+  const CustomListTile({
+    super.key,
+    required this.title,
+    required this.svgPath,
+    this.onTap,
+    this.color,
+    this.showArrow = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: onTap,
+      contentPadding: EdgeInsets.zero,
+      leading: SvgPicture.asset(
+        svgPath,
+        height: 30.h,
+        width: 30.h,
+        colorFilter: ColorFilter.mode(
+          color ?? context.iconColor,
+          BlendMode.srcIn,
+        ),
+      ),
+      title: Text(
+        title,
+        style: GoogleFonts.urbanist(
+          fontSize: 20.sp,
+          fontWeight: FontWeight.w600,
+          color: color ?? context.textColor,
+        ),
+      ),
+      trailing: showArrow
+          ? Icon(Icons.arrow_forward_ios, color: context.iconColor, size: 25.h)
+          : null,
+    );
+  }
+}
+
+class UserNameAndPhonePart extends StatelessWidget {
+  const UserNameAndPhonePart({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<ProfileInfoBloc, ProfileInfoState>(
+      listener: (context, state) {
+        if (state is ProfileInfoError) {
+          getIt<ToastService>().showErrorToast(
+            message: state.message,
+            context: context,
+          );
+        }
+      },
+      builder: (context, state) {
+        if (state is ProfileInfoLoading) {
+          return Column(
+            children: [
+              ShimmerBox(height: 30.h, width: context.screenWidth * 0.4),
+              SizedBox(height: 10.h),
+              ShimmerBox(height: 30.h, width: context.screenWidth * 0.3),
+            ],
+          );
+        } else if (state is ProfileInfoLoaded) {
+          return Column(
+            children: [
+              Text(
+                state.profile.fullname,
+                style: GoogleFonts.urbanist(
+                  fontSize: 30.sp,
+                  fontWeight: FontWeight.bold,
+                  color: context.textColor,
+                ),
+              ),
+              SizedBox(height: 3.h),
+              Text(
+                state.profile.phone,
+                style: GoogleFonts.urbanist(
+                  fontSize: 18.sp,
+                  color: context.textColor,
+                ),
+              ),
+            ],
+          );
+        }
+        return const SizedBox.shrink();
+      },
+    );
   }
 }

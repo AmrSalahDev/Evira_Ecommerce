@@ -31,11 +31,19 @@ class $AssetsIconsGen {
   /// File path: assets/icons/close.svg
   SvgGenImage get close => const SvgGenImage('assets/icons/close.svg');
 
+  /// File path: assets/icons/darkmode_outline.svg
+  SvgGenImage get darkmodeOutline =>
+      const SvgGenImage('assets/icons/darkmode_outline.svg');
+
   /// File path: assets/icons/facebook.svg
   SvgGenImage get facebook => const SvgGenImage('assets/icons/facebook.svg');
 
   /// File path: assets/icons/google.svg
   SvgGenImage get google => const SvgGenImage('assets/icons/google.svg');
+
+  /// File path: assets/icons/help_center_outline.svg
+  SvgGenImage get helpCenterOutline =>
+      const SvgGenImage('assets/icons/help_center_outline.svg');
 
   /// File path: assets/icons/home.png
   AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
@@ -43,6 +51,26 @@ class $AssetsIconsGen {
   /// File path: assets/icons/home_active.png
   AssetGenImage get homeActive =>
       const AssetGenImage('assets/icons/home_active.png');
+
+  /// File path: assets/icons/invite_friends_outline.svg
+  SvgGenImage get inviteFriendsOutline =>
+      const SvgGenImage('assets/icons/invite_friends_outline.svg');
+
+  /// File path: assets/icons/language_outline.svg
+  SvgGenImage get languageOutline =>
+      const SvgGenImage('assets/icons/language_outline.svg');
+
+  /// File path: assets/icons/location_outline.svg
+  SvgGenImage get locationOutline =>
+      const SvgGenImage('assets/icons/location_outline.svg');
+
+  /// File path: assets/icons/logout_outline.svg
+  SvgGenImage get logoutOutline =>
+      const SvgGenImage('assets/icons/logout_outline.svg');
+
+  /// File path: assets/icons/notification_outline.svg
+  SvgGenImage get notificationOutline =>
+      const SvgGenImage('assets/icons/notification_outline.svg');
 
   /// File path: assets/icons/orders.png
   AssetGenImage get orders => const AssetGenImage('assets/icons/orders.png');
@@ -58,6 +86,10 @@ class $AssetsIconsGen {
   AssetGenImage get personActive =>
       const AssetGenImage('assets/icons/person_active.png');
 
+  /// File path: assets/icons/privacy_policy_outline.svg
+  SvgGenImage get privacyPolicyOutline =>
+      const SvgGenImage('assets/icons/privacy_policy_outline.svg');
+
   /// File path: assets/icons/profile.svg
   SvgGenImage get profile => const SvgGenImage('assets/icons/profile.svg');
 
@@ -67,9 +99,17 @@ class $AssetsIconsGen {
   /// File path: assets/icons/search.svg
   SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
 
+  /// File path: assets/icons/security_outline.svg
+  SvgGenImage get securityOutline =>
+      const SvgGenImage('assets/icons/security_outline.svg');
+
   /// File path: assets/icons/sliders-simple.svg
   SvgGenImage get slidersSimple =>
       const SvgGenImage('assets/icons/sliders-simple.svg');
+
+  /// File path: assets/icons/user_outline.svg
+  SvgGenImage get userOutline =>
+      const SvgGenImage('assets/icons/user_outline.svg');
 
   /// File path: assets/icons/wallet.png
   AssetGenImage get wallet => const AssetGenImage('assets/icons/wallet.png');
@@ -78,26 +118,41 @@ class $AssetsIconsGen {
   AssetGenImage get walletActive =>
       const AssetGenImage('assets/icons/wallet_active.png');
 
+  /// File path: assets/icons/wallet_outline.svg
+  SvgGenImage get walletOutline =>
+      const SvgGenImage('assets/icons/wallet_outline.svg');
+
   /// List of all assets
   List<dynamic> get values => [
     apple,
     cart,
     cartActive,
     close,
+    darkmodeOutline,
     facebook,
     google,
+    helpCenterOutline,
     home,
     homeActive,
+    inviteFriendsOutline,
+    languageOutline,
+    locationOutline,
+    logoutOutline,
+    notificationOutline,
     orders,
     ordersActive,
     person,
     personActive,
+    privacyPolicyOutline,
     profile,
     roundMenu,
     search,
+    securityOutline,
     slidersSimple,
+    userOutline,
     wallet,
     walletActive,
+    walletOutline,
   ];
 }
 

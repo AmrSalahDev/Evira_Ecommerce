@@ -125,5 +125,15 @@
     "quantity":"Quantity",
     "addToCart":"Add to Cart",
     "totalPrice":"Total Price",
-    "noMoreProducts":"No more products to show."
+    "noMoreProducts":"No more products to show.",
+    "editProfile":"Edit Profile",
+    "address":"Address",
+    "payment":"Payment",
+    "security":"Security",
+    "language":"Language",
+    "darkMode":"Dark Mode",
+    "privacyPolicy":"Privacy Policy",
+    "helpCenter":"Help Center",
+    "inviteFriends":"Invite Friends",
+    "logout":"Logout"
 }

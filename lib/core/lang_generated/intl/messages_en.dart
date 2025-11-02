@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Add a PIN number to make your account more secure.",
     ),
     "addToCart": MessageLookupByLibrary.simpleMessage("Add to Cart"),
+    "address": MessageLookupByLibrary.simpleMessage("Address"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
@@ -86,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "createYourNewPassword": MessageLookupByLibrary.simpleMessage(
       "Create your new password",
     ),
+    "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "description": MessageLookupByLibrary.simpleMessage("Description"),
@@ -93,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
+    "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
       "Email already in use",
@@ -124,16 +127,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "goodAfternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon "),
     "goodEvening": MessageLookupByLibrary.simpleMessage("Good Evening "),
     "goodMorning": MessageLookupByLibrary.simpleMessage("Good Morning "),
+    "helpCenter": MessageLookupByLibrary.simpleMessage("Help Center"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "incorrectPIN": MessageLookupByLibrary.simpleMessage("Incorrect PIN"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid email"),
     "invalid_credentials": MessageLookupByLibrary.simpleMessage(
       "Email or password is incorrect",
     ),
+    "inviteFriends": MessageLookupByLibrary.simpleMessage("Invite Friends"),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
     "letsYouIn": MessageLookupByLibrary.simpleMessage("Let\'s you in"),
     "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
       "Login to your Account",
     ),
+    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "mostPopular": MessageLookupByLibrary.simpleMessage("Most Popular"),
     "networkError": MessageLookupByLibrary.simpleMessage("Network error"),
@@ -179,11 +186,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordTooWeak": MessageLookupByLibrary.simpleMessage(
       "Password too weak",
     ),
+    "payment": MessageLookupByLibrary.simpleMessage("Payment"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "pleaseEnterKeyword": MessageLookupByLibrary.simpleMessage(
       "Please enter a keyword",
     ),
     "priceRange": MessageLookupByLibrary.simpleMessage("Price Range"),
+    "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "putYourFinger": MessageLookupByLibrary.simpleMessage(
       "Please put your finger on the fingerprint\nscanner to get started",
@@ -197,6 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "reset": MessageLookupByLibrary.simpleMessage("Reset"),
     "resultsfor": MessageLookupByLibrary.simpleMessage("Results for"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
+    "security": MessageLookupByLibrary.simpleMessage("Security"),
     "seeAll": MessageLookupByLibrary.simpleMessage("See All"),
     "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
     "setUpBiometricDescription": MessageLookupByLibrary.simpleMessage(

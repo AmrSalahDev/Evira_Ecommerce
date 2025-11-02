@@ -146,6 +146,28 @@ import 'package:evira_e_commerce/features/product_details/domain/usecases/get_pr
     as _i263;
 import 'package:evira_e_commerce/features/product_details/ui/bloc/product_details_bloc.dart'
     as _i943;
+import 'package:evira_e_commerce/features/profile/data/datasources/profile_remote_datasource_impl.dart'
+    as _i272;
+import 'package:evira_e_commerce/features/profile/data/repos/profile_repo_impl.dart'
+    as _i323;
+import 'package:evira_e_commerce/features/profile/domain/datasources/profile_remote_datasource.dart'
+    as _i948;
+import 'package:evira_e_commerce/features/profile/domain/repos/profile_repo.dart'
+    as _i907;
+import 'package:evira_e_commerce/features/profile/domain/usecases/get_profile_info_usecase.dart'
+    as _i852;
+import 'package:evira_e_commerce/features/profile/domain/usecases/get_user_image_usecase.dart'
+    as _i45;
+import 'package:evira_e_commerce/features/profile/domain/usecases/profile_image_picker_usecase.dart'
+    as _i230;
+import 'package:evira_e_commerce/features/profile/domain/usecases/update_user_image_usecase.dart'
+    as _i172;
+import 'package:evira_e_commerce/features/profile/ui/bloc/profile_image_bloc.dart'
+    as _i1006;
+import 'package:evira_e_commerce/features/profile/ui/bloc/profile_image_picker_bloc.dart'
+    as _i381;
+import 'package:evira_e_commerce/features/profile/ui/bloc/profile_info_bloc.dart'
+    as _i141;
 import 'package:evira_e_commerce/features/search/data/datasources/search_remote_datasource_impl.dart'
     as _i758;
 import 'package:evira_e_commerce/features/search/data/repos/search_repo_impl.dart'
@@ -260,6 +282,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i307.WishlistRemoteDataSource>(
       () => _i307.WishlistRemoteDataSourceImpl(),
     );
+    gh.lazySingleton<_i948.ProfileRemoteDatasource>(
+      () => _i272.ProfileRemoteDatasourceImpl(),
+    );
     gh.lazySingleton<_i623.FillProfileRepo>(() => _i133.FillProfileRepoImpl());
     gh.lazySingleton<_i771.HomeAppBarRepo>(() => _i603.HomeAppBarRepoImpl());
     gh.lazySingleton<_i487.HomeBannerRepo>(() => _i170.HomeBannerRepoImpl());
@@ -330,6 +355,9 @@ extension GetItInjectableX on _i174.GetIt {
         specialOffersRepo: gh<_i563.SpecialOffersRepo>(),
       ),
     );
+    gh.lazySingleton<_i907.ProfileRepo>(
+      () => _i323.ProfileRepoImpl(gh<_i948.ProfileRemoteDatasource>()),
+    );
     gh.factory<_i494.ShowDatePickerUsecase>(
       () => _i494.ShowDatePickerUsecase(gh<_i623.FillProfileRepo>()),
     );
@@ -390,6 +418,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i583.GetMostPopularUsecase>(
       () => _i583.GetMostPopularUsecase(gh<_i815.MostPopularRepo>()),
     );
+    gh.factory<_i852.GetProfileInfoUsecase>(
+      () => _i852.GetProfileInfoUsecase(gh<_i907.ProfileRepo>()),
+    );
     gh.lazySingleton<_i408.ProductDetailsRepo>(
       () => _i763.ProductDetailsRepoImpl(
         gh<_i136.ProductDetailsRemoteDatasource>(),
@@ -419,6 +450,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i1058.GetHomeProductsUsecase>(
       () => _i1058.GetHomeProductsUsecase(gh<_i670.HomeRepo>()),
+    );
+    gh.factory<_i141.ProfileInfoBloc>(
+      () => _i141.ProfileInfoBloc(gh<_i852.GetProfileInfoUsecase>()),
     );
     gh.lazySingleton<_i305.NotificationRepo>(
       () =>
@@ -458,6 +492,16 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i81.CategoryViewBloc>(
       () => _i81.CategoryViewBloc(gh<_i86.GetCategoryProductsUsecase>()),
+    );
+    gh.factory<_i45.GetUserImageUsecase>(
+      () => _i45.GetUserImageUsecase(profileRepo: gh<_i907.ProfileRepo>()),
+    );
+    gh.factory<_i230.ProfileImagePickerUsecase>(
+      () =>
+          _i230.ProfileImagePickerUsecase(profileRepo: gh<_i907.ProfileRepo>()),
+    );
+    gh.factory<_i172.UpdateUserImageUsecase>(
+      () => _i172.UpdateUserImageUsecase(profileRepo: gh<_i907.ProfileRepo>()),
     );
     gh.factory<_i738.SearchResultsBloc>(
       () => _i738.SearchResultsBloc(
@@ -499,6 +543,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i289.ClearAllNotificatonsUsecase>(
       () => _i289.ClearAllNotificatonsUsecase(gh<_i305.NotificationRepo>()),
+    );
+    gh.factory<_i381.ProfileImagePickerBloc>(
+      () => _i381.ProfileImagePickerBloc(gh<_i230.ProfileImagePickerUsecase>()),
+    );
+    gh.factory<_i1006.ProfileImageBloc>(
+      () => _i1006.ProfileImageBloc(
+        gh<_i172.UpdateUserImageUsecase>(),
+        gh<_i45.GetUserImageUsecase>(),
+      ),
     );
     gh.lazySingleton<_i529.NotificationBloc>(
       () => _i529.NotificationBloc(
