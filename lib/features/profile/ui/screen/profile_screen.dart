@@ -1,10 +1,13 @@
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/gen/assets.gen.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
+import 'package:evira_e_commerce/core/services/dialog_service.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/profile/ui/bloc/profile_info_bloc.dart';
 import 'package:evira_e_commerce/features/profile/ui/widgets/user_image_part.dart';
+import 'package:evira_e_commerce/shared/cubits/social_auth_cubit.dart';
+import 'package:evira_e_commerce/shared/cubits/theme_cubit.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
 import 'package:evira_e_commerce/shared/widgets/shimmer_box.dart';
 import 'package:flutter/material.dart';
@@ -94,11 +97,9 @@ class _ProfileScreenState extends State<ProfileScreen>
               svgPath: Assets.icons.languageOutline.path,
               onTap: () {},
             ),
-            CustomListTile(
-              title: EviraLang.of(context).darkMode,
-              svgPath: Assets.icons.darkmodeOutline.path,
-              onTap: () {},
-            ),
+
+            SwitchListTilePart(),
+
             CustomListTile(
               title: EviraLang.of(context).privacyPolicy,
               svgPath: Assets.icons.privacyPolicyOutline.path,
@@ -119,11 +120,63 @@ class _ProfileScreenState extends State<ProfileScreen>
               svgPath: Assets.icons.logoutOutline.path,
               color: Colors.redAccent,
               showArrow: false,
-              onTap: () {},
+              onTap: () {
+                showLogoutDialog(context);
+              },
             ),
             SizedBox(height: 50.h),
           ],
         ),
+      ),
+    );
+  }
+}
+
+void showLogoutDialog(BuildContext context) {
+  DialogService.showCustomSimpleDialog(
+    context: context,
+    title: EviraLang.of(context).logout,
+    content: EviraLang.of(context).logoutDescription,
+    confirmText: EviraLang.of(context).logout,
+    cancelText: EviraLang.of(context).cancel,
+    onConfirm: () async {
+      await getIt<SocialAuthCubit>().signOut();
+    },
+    onCancel: () {
+      Navigator.pop(context);
+    },
+  );
+}
+
+class SwitchListTilePart extends StatelessWidget {
+  const SwitchListTilePart({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SwitchListTile(
+      contentPadding: EdgeInsets.zero,
+      activeTrackColor: context.cardColor,
+      inactiveTrackColor: context.cardColor,
+      inactiveThumbColor: context.iconColor,
+      trackOutlineColor: WidgetStatePropertyAll(Colors.transparent),
+      thumbColor: WidgetStatePropertyAll(context.iconColor),
+      title: Text(
+        EviraLang.of(context).darkMode,
+        style: GoogleFonts.urbanist(
+          fontSize: 20.sp,
+          fontWeight: FontWeight.w600,
+          color: context.textColor,
+        ),
+      ),
+      value: context.isDark,
+      onChanged: (value) {
+        context.read<ThemeCubit>().toggleTheme();
+      },
+      secondary: SvgPicture.asset(
+        Assets.icons.darkmodeOutline.path,
+        height: 30.h,
+        width: 30.h,
+        colorFilter: ColorFilter.mode(context.iconColor, BlendMode.srcIn),
       ),
     );
   }

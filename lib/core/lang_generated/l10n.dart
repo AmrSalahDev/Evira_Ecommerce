@@ -1083,6 +1083,16 @@ class EviraLang {
   String get logout {
     return Intl.message('Logout', name: 'logout', desc: '', args: []);
   }
+
+  /// `Are you sure you want to logout?`
+  String get logoutDescription {
+    return Intl.message(
+      'Are you sure you want to logout?',
+      name: 'logoutDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

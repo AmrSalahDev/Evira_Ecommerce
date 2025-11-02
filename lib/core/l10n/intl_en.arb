@@ -135,5 +135,6 @@
     "privacyPolicy":"Privacy Policy",
     "helpCenter":"Help Center",
     "inviteFriends":"Invite Friends",
-    "logout":"Logout"
+    "logout":"Logout",
+    "logoutDescription":"Are you sure you want to logout?"
 }
