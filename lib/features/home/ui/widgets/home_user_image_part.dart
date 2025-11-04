@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/gen/assets.gen.dart';
-import 'package:evira_e_commerce/core/services/social_auth_service.dart';
+import 'package:evira_e_commerce/core/routes/app_router.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
 class HomeUserImagePart extends StatelessWidget {
@@ -15,7 +15,7 @@ class HomeUserImagePart extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        getIt<SocialAuthService>().signOut();
+        context.push(AppPaths.profile);
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100),

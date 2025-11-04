@@ -78,6 +78,9 @@ dependencies:
   visibility_detector: ^0.4.0+2
   bloc_concurrency: ^0.3.0
   readmore: ^3.0.0
+  permission_handler: ^12.0.1
+  contacts_service_plus: ^0.0.2
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_lints: ^5.0.0

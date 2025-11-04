@@ -5,6 +5,7 @@ import 'package:evira_e_commerce/core/theme/app_theme.dart';
 
 import 'package:evira_e_commerce/firebase_options.dart';
 import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart';
+import 'package:evira_e_commerce/shared/cubits/language_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/network_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/theme_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -59,6 +60,7 @@ Future<void> main() async {
       providers: [
         BlocProvider.value(value: getIt<ThemeCubit>()),
         BlocProvider.value(value: getIt<NetworkCubit>()),
+        BlocProvider.value(value: getIt<LanguageCubit>()),
       ],
       child: EviraApp(appFlowCubit: appFlowCubit),
     ),
@@ -91,41 +93,48 @@ class EviraApp extends StatelessWidget {
             curve: Curves.easeInOut,
             child: BlocProvider.value(
               value: appFlowCubit,
-              child: BlocSelector<AppFlowCubit, AppFlowState, String>(
-                selector: (state) {
-                  return state is AppFlowPathState
-                      ? state.path
-                      : AppPaths.onboarding;
-                },
-                builder: (context, path) {
-                  return MaterialApp.router(
-                    debugShowCheckedModeBanner: false,
-                    routerConfig: AppRouter.createRouter(appFlowCubit, path),
-                    locale: const Locale('en'),
-                    localizationsDelegates: [
-                      EviraLang.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                    ],
-                    supportedLocales: EviraLang.delegate.supportedLocales,
-                    theme: AppTheme.light,
-                    darkTheme: AppTheme.dark,
-                    themeMode: themeMode,
-                    builder: (context, child) {
-                      final isDark =
-                          Theme.of(context).brightness == Brightness.dark;
+              child: BlocBuilder<LanguageCubit, Locale>(
+                builder: (context, locale) {
+                  return BlocSelector<AppFlowCubit, AppFlowState, String>(
+                    selector: (state) {
+                      return state is AppFlowPathState
+                          ? state.path
+                          : AppPaths.onboarding;
+                    },
+                    builder: (context, path) {
+                      return MaterialApp.router(
+                        debugShowCheckedModeBanner: false,
+                        routerConfig: AppRouter.createRouter(
+                          appFlowCubit,
+                          path,
+                        ),
+                        locale: locale,
+                        localizationsDelegates: [
+                          EviraLang.delegate,
+                          GlobalMaterialLocalizations.delegate,
+                          GlobalWidgetsLocalizations.delegate,
+                          GlobalCupertinoLocalizations.delegate,
+                        ],
+                        supportedLocales: EviraLang.delegate.supportedLocales,
+                        theme: AppTheme.light,
+                        darkTheme: AppTheme.dark,
+                        themeMode: themeMode,
+                        builder: (context, child) {
+                          final isDark =
+                              Theme.of(context).brightness == Brightness.dark;
 
-                      return SystemUIWrapper(
-                        statusBarColor: context.backgroundColor,
-                        statusBarIconBrightness: isDark
-                            ? Brightness.light
-                            : Brightness.dark,
-                        navigationBarColor: context.backgroundColor,
-                        navigationBarIconBrightness: isDark
-                            ? Brightness.light
-                            : Brightness.dark,
-                        child: child!,
+                          return SystemUIWrapper(
+                            statusBarColor: context.backgroundColor,
+                            statusBarIconBrightness: isDark
+                                ? Brightness.light
+                                : Brightness.dark,
+                            navigationBarColor: context.backgroundColor,
+                            navigationBarIconBrightness: isDark
+                                ? Brightness.light
+                                : Brightness.dark,
+                            child: child!,
+                          );
+                        },
                       );
                     },
                   );

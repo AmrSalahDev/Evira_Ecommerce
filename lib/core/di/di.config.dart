@@ -88,6 +88,18 @@ import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart
     as _i329;
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart'
     as _i1000;
+import 'package:evira_e_commerce/features/invite_friends/data/repo/invite_friends_repo_impl.dart'
+    as _i798;
+import 'package:evira_e_commerce/features/invite_friends/domain/repo/invite_friends_repo.dart'
+    as _i406;
+import 'package:evira_e_commerce/features/invite_friends/domain/usecases/get_friends_usecase.dart'
+    as _i822;
+import 'package:evira_e_commerce/features/invite_friends/domain/usecases/send_email_usecase.dart'
+    as _i893;
+import 'package:evira_e_commerce/features/invite_friends/domain/usecases/send_sms_usecase.dart'
+    as _i1013;
+import 'package:evira_e_commerce/features/invite_friends/ui/bloc/invite_friends_bloc.dart'
+    as _i1043;
 import 'package:evira_e_commerce/features/login/data/repos/login_repo_impl.dart'
     as _i1036;
 import 'package:evira_e_commerce/features/login/domain/repos/login_repo.dart'
@@ -239,6 +251,7 @@ import 'package:evira_e_commerce/features/wishlist/ui/bloc/wishlist_bloc.dart'
 import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart' as _i170;
 import 'package:evira_e_commerce/shared/cubits/category_cubit.dart' as _i296;
 import 'package:evira_e_commerce/shared/cubits/greeting_cubit.dart' as _i795;
+import 'package:evira_e_commerce/shared/cubits/language_cubit.dart' as _i843;
 import 'package:evira_e_commerce/shared/cubits/network_cubit.dart' as _i969;
 import 'package:evira_e_commerce/shared/cubits/social_auth_cubit.dart' as _i149;
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart' as _i669;
@@ -271,6 +284,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i940.FilterCubit>(() => _i940.FilterCubit());
     gh.lazySingleton<_i170.AppFlowCubit>(() => _i170.AppFlowCubit());
     gh.lazySingleton<_i795.GreetingCubit>(() => _i795.GreetingCubit());
+    gh.lazySingleton<_i843.LanguageCubit>(() => _i843.LanguageCubit());
     gh.lazySingleton<_i969.NetworkCubit>(() => _i969.NetworkCubit());
     gh.lazySingleton<_i436.ThemeCubit>(() => _i436.ThemeCubit());
     gh.lazySingleton<_i109.CategoryViewRemoteDatasource>(
@@ -297,6 +311,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i563.SpecialOffersRepo>(
       () => _i752.SpecialOffersRepoImpl(gh<_i64.SpecialOffersDatasource>()),
+    );
+    gh.lazySingleton<_i406.InviteFriendsRepo>(
+      () => _i798.InviteFriendsRepoImpl(),
     );
     gh.lazySingleton<_i1011.ImagePickerRepo>(() => _i782.ImagePickerRepoImpl());
     gh.lazySingleton<_i962.SignupRepo>(() => _i280.SignupRepoImpl());
@@ -364,6 +381,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i211.CategoryViewRepo>(
       () => _i36.CategoryViewRepoImpl(gh<_i109.CategoryViewRemoteDatasource>()),
     );
+    gh.factory<_i893.SendEmailUsecase>(
+      () => _i893.SendEmailUsecase(gh<_i406.InviteFriendsRepo>()),
+    );
     gh.factory<_i590.AddProductToWishlistUsecase>(
       () => _i590.AddProductToWishlistUsecase(
         wishlistRepo: gh<_i603.WishlistRepo>(),
@@ -403,8 +423,25 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i524.OnFavoritesChangesUsecase>(
       () => _i524.OnFavoritesChangesUsecase(gh<_i603.WishlistRepo>()),
     );
+    gh.factory<_i822.GetFriendsUsecase>(
+      () => _i822.GetFriendsUsecase(
+        inviteFriendsRepo: gh<_i406.InviteFriendsRepo>(),
+      ),
+    );
+    gh.factory<_i1013.SendSmsUsecase>(
+      () => _i1013.SendSmsUsecase(
+        inviteFriendsRepo: gh<_i406.InviteFriendsRepo>(),
+      ),
+    );
     gh.lazySingleton<_i595.SearchRepo>(
       () => _i388.SearchRepoImpl(gh<_i675.SearchRemoteDatasource>()),
+    );
+    gh.factory<_i1043.InviteFriendsBloc>(
+      () => _i1043.InviteFriendsBloc(
+        gh<_i893.SendEmailUsecase>(),
+        gh<_i1013.SendSmsUsecase>(),
+        gh<_i822.GetFriendsUsecase>(),
+      ),
     );
     gh.factory<_i378.ProfileImageCubit>(
       () => _i378.ProfileImageCubit(

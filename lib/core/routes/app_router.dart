@@ -10,6 +10,10 @@ import 'package:evira_e_commerce/features/error/ui/screen/error_screen.dart';
 import 'package:evira_e_commerce/features/home/ui/bloc/home_products_bloc.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
+import 'package:evira_e_commerce/features/invite_friends/ui/bloc/invite_friends_bloc.dart';
+import 'package:evira_e_commerce/features/invite_friends/ui/screen/invite_friends_screen.dart';
+import 'package:evira_e_commerce/features/language/ui/screen/language_screen.dart';
+import 'package:evira_e_commerce/features/privacy_policy/ui/screen/privacy_policy_screen.dart';
 import 'package:evira_e_commerce/features/profile/ui/bloc/profile_image_picker_bloc.dart';
 import 'package:evira_e_commerce/features/profile/ui/bloc/profile_info_bloc.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_bottom_navigation_bar.dart';
@@ -80,6 +84,9 @@ class AppPaths {
   static final String categoryView = '/categoryView';
   static final String productDetails = '/productDetails';
   static final String profile = '/profile';
+  static final String language = '/language';
+  static final String inviteFriends = '/inviteFriends';
+  static final String privacyPolicy = '/privacyPolicy';
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -151,6 +158,24 @@ class AppRouter {
               child: OnBoardingScreen(),
             );
           },
+        ),
+
+        GoRoute(
+          path: AppPaths.language,
+          builder: (context, state) => const LanguageScreen(),
+        ),
+
+        GoRoute(
+          path: AppPaths.inviteFriends,
+          builder: (context, state) => BlocProvider(
+            create: (context) => getIt<InviteFriendsBloc>(),
+            child: const InviteFriendsScreen(),
+          ),
+        ),
+
+        GoRoute(
+          path: AppPaths.privacyPolicy,
+          builder: (context, state) => const PrivacyPolicyScreen(),
         ),
 
         GoRoute(

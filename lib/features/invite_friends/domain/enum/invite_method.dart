@@ -1,0 +1,1 @@
+enum InviteMethod { sms, email }

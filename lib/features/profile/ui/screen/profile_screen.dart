@@ -1,11 +1,14 @@
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/gen/assets.gen.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
+import 'package:evira_e_commerce/core/routes/app_router.dart';
 import 'package:evira_e_commerce/core/services/dialog_service.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
+import 'package:evira_e_commerce/features/language/models/language_model.dart';
 import 'package:evira_e_commerce/features/profile/ui/bloc/profile_info_bloc.dart';
 import 'package:evira_e_commerce/features/profile/ui/widgets/user_image_part.dart';
+import 'package:evira_e_commerce/shared/cubits/language_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/social_auth_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/theme_cubit.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
@@ -14,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_flutter_toolkit/core/extensions/context_extensions.dart';
 
@@ -92,10 +96,35 @@ class _ProfileScreenState extends State<ProfileScreen>
               svgPath: Assets.icons.securityOutline.path,
               onTap: () {},
             ),
-            CustomListTile(
-              title: EviraLang.of(context).language,
-              svgPath: Assets.icons.languageOutline.path,
-              onTap: () {},
+            BlocBuilder<LanguageCubit, Locale>(
+              builder: (context, locale) {
+                return CustomListTile(
+                  title: EviraLang.of(context).language,
+                  svgPath: Assets.icons.languageOutline.path,
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        LanguageModel.getLanguageName(locale.languageCode),
+                        style: GoogleFonts.urbanist(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w500,
+                          color: context.textColor,
+                        ),
+                      ),
+                      SizedBox(width: 10.w),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        color: context.iconColor,
+                        size: 25.h,
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    context.push(AppPaths.language);
+                  },
+                );
+              },
             ),
 
             SwitchListTilePart(),
@@ -103,7 +132,9 @@ class _ProfileScreenState extends State<ProfileScreen>
             CustomListTile(
               title: EviraLang.of(context).privacyPolicy,
               svgPath: Assets.icons.privacyPolicyOutline.path,
-              onTap: () {},
+              onTap: () {
+                context.push(AppPaths.privacyPolicy);
+              },
             ),
             CustomListTile(
               title: EviraLang.of(context).helpCenter,
@@ -113,7 +144,9 @@ class _ProfileScreenState extends State<ProfileScreen>
             CustomListTile(
               title: EviraLang.of(context).inviteFriends,
               svgPath: Assets.icons.inviteFriendsOutline.path,
-              onTap: () {},
+              onTap: () {
+                context.push(AppPaths.inviteFriends);
+              },
             ),
             CustomListTile(
               title: EviraLang.of(context).logout,
@@ -187,6 +220,7 @@ class CustomListTile extends StatelessWidget {
   final String svgPath;
   final Color? color;
   final bool showArrow;
+  final Widget? trailing;
   final void Function()? onTap;
   const CustomListTile({
     super.key,
@@ -195,6 +229,7 @@ class CustomListTile extends StatelessWidget {
     this.onTap,
     this.color,
     this.showArrow = true,
+    this.trailing,
   });
 
   @override
@@ -220,7 +255,12 @@ class CustomListTile extends StatelessWidget {
         ),
       ),
       trailing: showArrow
-          ? Icon(Icons.arrow_forward_ios, color: context.iconColor, size: 25.h)
+          ? trailing ??
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: context.iconColor,
+                  size: 25.h,
+                )
           : null,
     );
   }

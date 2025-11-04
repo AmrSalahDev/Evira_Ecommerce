@@ -1093,6 +1093,61 @@ class EviraLang {
       args: [],
     );
   }
+
+  /// `Suggested`
+  String get suggested {
+    return Intl.message('Suggested', name: 'suggested', desc: '', args: []);
+  }
+
+  /// `Invite`
+  String get invite {
+    return Intl.message('Invite', name: 'invite', desc: '', args: []);
+  }
+
+  /// `Invited`
+  String get invited {
+    return Intl.message('Invited', name: 'invited', desc: '', args: []);
+  }
+
+  /// `No contacts found!`
+  String get noContactsFound {
+    return Intl.message(
+      'No contacts found!',
+      name: 'noContactsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown`
+  String get unknown {
+    return Intl.message('Unknown', name: 'unknown', desc: '', args: []);
+  }
+
+  /// `Send SMS`
+  String get sendSms {
+    return Intl.message('Send SMS', name: 'sendSms', desc: '', args: []);
+  }
+
+  /// `Send Email`
+  String get sendEmail {
+    return Intl.message('Send Email', name: 'sendEmail', desc: '', args: []);
+  }
+
+  /// `Share Link`
+  String get share {
+    return Intl.message('Share Link', name: 'share', desc: '', args: []);
+  }
+
+  /// `Invitation sent to `
+  String get invicationSent {
+    return Intl.message(
+      'Invitation sent to ',
+      name: 'invicationSent',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

@@ -136,5 +136,14 @@
     "helpCenter":"Help Center",
     "inviteFriends":"Invite Friends",
     "logout":"Logout",
-    "logoutDescription":"Are you sure you want to logout?"
+    "logoutDescription":"Are you sure you want to logout?",
+    "suggested":"Suggested",
+    "invite":"Invite",
+    "invited":"Invited",
+    "noContactsFound":"No contacts found!",
+    "unknown":"Unknown",
+    "sendSms":"Send SMS",
+    "sendEmail":"Send Email",
+    "share":"Share Link",
+    "invicationSent":"Invitation sent to "
 }

@@ -134,7 +134,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalid_credentials": MessageLookupByLibrary.simpleMessage(
       "Email or password is incorrect",
     ),
+    "invicationSent": MessageLookupByLibrary.simpleMessage(
+      "Invitation sent to ",
+    ),
+    "invite": MessageLookupByLibrary.simpleMessage("Invite"),
     "inviteFriends": MessageLookupByLibrary.simpleMessage("Invite Friends"),
+    "invited": MessageLookupByLibrary.simpleMessage("Invited"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "letsYouIn": MessageLookupByLibrary.simpleMessage("Let\'s you in"),
     "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
@@ -149,6 +154,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkError": MessageLookupByLibrary.simpleMessage("Network error"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "nickName": MessageLookupByLibrary.simpleMessage("Nickname"),
+    "noContactsFound": MessageLookupByLibrary.simpleMessage(
+      "No contacts found!",
+    ),
     "noInternet": MessageLookupByLibrary.simpleMessage("Oops! No internet!"),
     "noInternetConnection": MessageLookupByLibrary.simpleMessage(
       "No Internet Connection!",
@@ -212,6 +220,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "security": MessageLookupByLibrary.simpleMessage("Security"),
     "seeAll": MessageLookupByLibrary.simpleMessage("See All"),
     "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
+    "sendEmail": MessageLookupByLibrary.simpleMessage("Send Email"),
+    "sendSms": MessageLookupByLibrary.simpleMessage("Send SMS"),
     "setUpBiometricDescription": MessageLookupByLibrary.simpleMessage(
       "To enable this feature, first set up face or fingerprint unlock in your device settings.",
     ),
@@ -219,6 +229,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Set Your Fingerprint",
     ),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "share": MessageLookupByLibrary.simpleMessage("Share Link"),
     "showLess": MessageLookupByLibrary.simpleMessage("Show less"),
     "showMore": MessageLookupByLibrary.simpleMessage("Show more"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
@@ -235,6 +246,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "stillNoInternetConnection": MessageLookupByLibrary.simpleMessage(
       "Still no internet connection.",
     ),
+    "suggested": MessageLookupByLibrary.simpleMessage("Suggested"),
     "tooManyAttempts": MessageLookupByLibrary.simpleMessage(
       "Too many attempts. Try again after 30 seconds.",
     ),
@@ -243,6 +255,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "totalPrice": MessageLookupByLibrary.simpleMessage("Total Price"),
     "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
+    "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
     "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),
     "viaEmail": MessageLookupByLibrary.simpleMessage("via Email:"),
