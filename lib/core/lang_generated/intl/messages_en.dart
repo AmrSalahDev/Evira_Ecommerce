@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "account": MessageLookupByLibrary.simpleMessage("Account"),
     "accountIsReady": MessageLookupByLibrary.simpleMessage(
       "Your account is ready to use. You will be redirected to the Home page in a\nfew seconds..",
     ),
@@ -67,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "connectedWithoutInternet": MessageLookupByLibrary.simpleMessage(
       "Connected but no internet!",
     ),
+    "contactUs": MessageLookupByLibrary.simpleMessage("Contact us"),
     "continueWithApple": MessageLookupByLibrary.simpleMessage(
       "Continue with Apple",
     ),
@@ -87,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "createYourNewPassword": MessageLookupByLibrary.simpleMessage(
       "Create your new password",
     ),
+    "customerService": MessageLookupByLibrary.simpleMessage("Customer Service"),
     "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
@@ -103,9 +106,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "errorverifyingPIN": MessageLookupByLibrary.simpleMessage(
       "Error verifying PIN",
     ),
+    "facebook": MessageLookupByLibrary.simpleMessage("Facebook"),
     "failedToSavePIN": MessageLookupByLibrary.simpleMessage(
       "Failed to save PIN",
     ),
+    "faq": MessageLookupByLibrary.simpleMessage("FAQ"),
     "female": MessageLookupByLibrary.simpleMessage("Female"),
     "fillYourProfile": MessageLookupByLibrary.simpleMessage(
       "Fill Your Profile",
@@ -123,6 +128,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "found": MessageLookupByLibrary.simpleMessage("Found"),
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "gender": MessageLookupByLibrary.simpleMessage("Gender"),
+    "general": MessageLookupByLibrary.simpleMessage("General"),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
     "goodAfternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon "),
     "goodEvening": MessageLookupByLibrary.simpleMessage("Good Evening "),
@@ -130,6 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "helpCenter": MessageLookupByLibrary.simpleMessage("Help Center"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "incorrectPIN": MessageLookupByLibrary.simpleMessage("Incorrect PIN"),
+    "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid email"),
     "invalid_credentials": MessageLookupByLibrary.simpleMessage(
       "Email or password is incorrect",
@@ -150,6 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Are you sure you want to logout?",
     ),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
+    "message": MessageLookupByLibrary.simpleMessage("Message..."),
     "mostPopular": MessageLookupByLibrary.simpleMessage("Most Popular"),
     "networkError": MessageLookupByLibrary.simpleMessage("Network error"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
@@ -222,6 +230,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
     "sendEmail": MessageLookupByLibrary.simpleMessage("Send Email"),
     "sendSms": MessageLookupByLibrary.simpleMessage("Send SMS"),
+    "service": MessageLookupByLibrary.simpleMessage("Service"),
     "setUpBiometricDescription": MessageLookupByLibrary.simpleMessage(
       "To enable this feature, first set up face or fingerprint unlock in your device settings.",
     ),
@@ -255,12 +264,15 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "totalPrice": MessageLookupByLibrary.simpleMessage("Total Price"),
     "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
+    "twitter": MessageLookupByLibrary.simpleMessage("Twitter"),
     "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
     "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),
     "viaEmail": MessageLookupByLibrary.simpleMessage("via Email:"),
     "viaSMS": MessageLookupByLibrary.simpleMessage("via SMS:"),
     "wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
+    "website": MessageLookupByLibrary.simpleMessage("Website"),
+    "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
     "wishlist": MessageLookupByLibrary.simpleMessage("My Wishlist"),
     "yourAccountHasBeenCreated": MessageLookupByLibrary.simpleMessage(
       "Your account has been created!",

@@ -2,7 +2,6 @@ import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/gen/assets.gen.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/routes/app_router.dart';
-import 'package:evira_e_commerce/core/services/dialog_service.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/language/models/language_model.dart';
@@ -12,6 +11,7 @@ import 'package:evira_e_commerce/shared/cubits/language_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/social_auth_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/theme_cubit.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
+import 'package:evira_e_commerce/shared/widgets/custom_button.dart';
 import 'package:evira_e_commerce/shared/widgets/shimmer_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -139,7 +139,9 @@ class _ProfileScreenState extends State<ProfileScreen>
             CustomListTile(
               title: EviraLang.of(context).helpCenter,
               svgPath: Assets.icons.helpCenterOutline.path,
-              onTap: () {},
+              onTap: () {
+                context.push(AppPaths.helpCenter);
+              },
             ),
             CustomListTile(
               title: EviraLang.of(context).inviteFriends,
@@ -154,7 +156,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               color: Colors.redAccent,
               showArrow: false,
               onTap: () {
-                showLogoutDialog(context);
+                showLogoutBottomSheet(context);
               },
             ),
             SizedBox(height: 50.h),
@@ -165,20 +167,80 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 }
 
-void showLogoutDialog(BuildContext context) {
-  DialogService.showCustomSimpleDialog(
+void showLogoutBottomSheet(BuildContext context) {
+  showModalBottomSheet(
     context: context,
-    title: EviraLang.of(context).logout,
-    content: EviraLang.of(context).logoutDescription,
-    confirmText: EviraLang.of(context).logout,
-    cancelText: EviraLang.of(context).cancel,
-    onConfirm: () async {
-      await getIt<SocialAuthCubit>().signOut();
-    },
-    onCancel: () {
-      Navigator.pop(context);
+    showDragHandle: true,
+    backgroundColor: context.backgroundColor,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    ),
+    builder: (context) {
+      return LogoutBottomSheetPart();
     },
   );
+}
+
+class LogoutBottomSheetPart extends StatelessWidget {
+  const LogoutBottomSheetPart({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            EviraLang.of(context).logout,
+            style: GoogleFonts.urbanist(
+              fontSize: 30.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.redAccent,
+            ),
+          ),
+          SizedBox(height: 20.h),
+          Divider(color: context.dividerColor),
+          SizedBox(height: 20.h),
+          Text(
+            EviraLang.of(context).logoutDescription,
+            style: GoogleFonts.urbanist(
+              fontSize: 23.sp,
+              fontWeight: FontWeight.w600,
+              color: context.textColor,
+            ),
+          ),
+          SizedBox(height: 30.h),
+          Row(
+            children: [
+              Expanded(
+                child: CustomButton(
+                  title: EviraLang.of(context).cancel,
+                  backgroundColor: context.cardColor,
+                  textColor: context.textColor,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+              SizedBox(width: 20.w),
+              Expanded(
+                child: CustomButton(
+                  title: EviraLang.of(context).logout,
+                  backgroundColor: context.buttonColor,
+                  textColor: context.buttonTextColor,
+                  onPressed: () async {
+                    await getIt<SocialAuthCubit>().signOut();
+                  },
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 25.h),
+        ],
+      ),
+    );
+  }
 }
 
 class SwitchListTilePart extends StatelessWidget {

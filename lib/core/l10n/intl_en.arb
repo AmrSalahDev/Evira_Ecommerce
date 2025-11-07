@@ -145,5 +145,17 @@
     "sendSms":"Send SMS",
     "sendEmail":"Send Email",
     "share":"Share Link",
-    "invicationSent":"Invitation sent to "
+    "invicationSent":"Invitation sent to ",
+    "contactUs":"Contact us",
+    "faq":"FAQ",
+    "general":"General",
+    "account":"Account",
+    "service":"Service",
+    "customerService":"Customer Service",
+    "whatsapp":"Whatsapp",
+    "website":"Website",
+    "facebook":"Facebook",
+    "twitter":"Twitter",
+    "instagram":"Instagram",
+    "message":"Message..."
 }

@@ -38,6 +38,20 @@ import 'package:evira_e_commerce/features/create_pin/domain/usecases/verify_pin_
     as _i831;
 import 'package:evira_e_commerce/features/create_pin/ui/cubit/pin_cubit.dart'
     as _i734;
+import 'package:evira_e_commerce/features/customer_service/data/datasource/customer_service_remote_datasource_impl.dart'
+    as _i884;
+import 'package:evira_e_commerce/features/customer_service/data/repo/customer_service_impl.dart'
+    as _i336;
+import 'package:evira_e_commerce/features/customer_service/domain/datasource/customer_service_remote_datasource.dart'
+    as _i353;
+import 'package:evira_e_commerce/features/customer_service/domain/repo/customer_service_repo.dart'
+    as _i992;
+import 'package:evira_e_commerce/features/customer_service/domain/usecases/get_messages_usecase.dart'
+    as _i75;
+import 'package:evira_e_commerce/features/customer_service/domain/usecases/send_message_usecase.dart'
+    as _i788;
+import 'package:evira_e_commerce/features/customer_service/ui/bloc/customer_service_bloc.dart'
+    as _i438;
 import 'package:evira_e_commerce/features/fill_profile/data/repos/fill_profile_repo_impl.dart'
     as _i133;
 import 'package:evira_e_commerce/features/fill_profile/data/repos/image_picker_repo_impl.dart'
@@ -336,9 +350,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i924.HomeRemoteDatasource>(
       () => _i168.HomeRemoteDatasourceImpl(),
     );
+    gh.lazySingleton<_i353.CustomerServiceRemoteDatasource>(
+      () => _i884.CustomerServiceRemoteDatasourceImpl(),
+    );
     gh.lazySingleton<_i457.CategoryRepo>(() => _i1010.CategoryRepoImpl());
     gh.lazySingleton<_i815.MostPopularRepo>(
       () => _i299.MostPopularRepoImpl(gh<_i369.MostPopularRemoteDatasource>()),
+    );
+    gh.lazySingleton<_i992.CustomerServiceRepo>(
+      () => _i336.CustomerServiceImpl(
+        gh<_i353.CustomerServiceRemoteDatasource>(),
+      ),
     );
     gh.lazySingleton<_i603.WishlistRepo>(
       () => _i540.WishlistRepoImpl(gh<_i307.WishlistRemoteDataSource>()),
@@ -398,6 +420,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i80.RemoveProductFromWishlistUsecase(
         wishlistRepo: gh<_i603.WishlistRepo>(),
       ),
+    );
+    gh.factory<_i75.GetMessagesUsecase>(
+      () => _i75.GetMessagesUsecase(gh<_i992.CustomerServiceRepo>()),
+    );
+    gh.factory<_i788.SendMessageUsecase>(
+      () => _i788.SendMessageUsecase(gh<_i992.CustomerServiceRepo>()),
     );
     gh.factory<_i109.SignupUsecase>(
       () => _i109.SignupUsecase(signupRepo: gh<_i962.SignupRepo>()),
@@ -522,6 +550,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i819.DeleteNotificationUsecase>(
       () => _i819.DeleteNotificationUsecase(
         notificationRepo: gh<_i305.NotificationRepo>(),
+      ),
+    );
+    gh.factory<_i438.CustomerServiceBloc>(
+      () => _i438.CustomerServiceBloc(
+        gh<_i75.GetMessagesUsecase>(),
+        gh<_i788.SendMessageUsecase>(),
       ),
     );
     gh.factory<_i263.GetProductDetailsUsecase>(

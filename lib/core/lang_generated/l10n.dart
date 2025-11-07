@@ -1148,6 +1148,71 @@ class EviraLang {
       args: [],
     );
   }
+
+  /// `Contact us`
+  String get contactUs {
+    return Intl.message('Contact us', name: 'contactUs', desc: '', args: []);
+  }
+
+  /// `FAQ`
+  String get faq {
+    return Intl.message('FAQ', name: 'faq', desc: '', args: []);
+  }
+
+  /// `General`
+  String get general {
+    return Intl.message('General', name: 'general', desc: '', args: []);
+  }
+
+  /// `Account`
+  String get account {
+    return Intl.message('Account', name: 'account', desc: '', args: []);
+  }
+
+  /// `Service`
+  String get service {
+    return Intl.message('Service', name: 'service', desc: '', args: []);
+  }
+
+  /// `Customer Service`
+  String get customerService {
+    return Intl.message(
+      'Customer Service',
+      name: 'customerService',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Whatsapp`
+  String get whatsapp {
+    return Intl.message('Whatsapp', name: 'whatsapp', desc: '', args: []);
+  }
+
+  /// `Website`
+  String get website {
+    return Intl.message('Website', name: 'website', desc: '', args: []);
+  }
+
+  /// `Facebook`
+  String get facebook {
+    return Intl.message('Facebook', name: 'facebook', desc: '', args: []);
+  }
+
+  /// `Twitter`
+  String get twitter {
+    return Intl.message('Twitter', name: 'twitter', desc: '', args: []);
+  }
+
+  /// `Instagram`
+  String get instagram {
+    return Intl.message('Instagram', name: 'instagram', desc: '', args: []);
+  }
+
+  /// `Message...`
+  String get message {
+    return Intl.message('Message...', name: 'message', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

@@ -6,7 +6,10 @@ import 'package:evira_e_commerce/core/routes/args/no_internet_screen_args.dart';
 import 'package:evira_e_commerce/core/routes/args/product_details_screen_args.dart';
 import 'package:evira_e_commerce/features/category_view/ui/bloc/category_view_bloc.dart';
 import 'package:evira_e_commerce/features/category_view/ui/screen/category_view_screen.dart';
+import 'package:evira_e_commerce/features/customer_service/ui/bloc/customer_service_bloc.dart';
+import 'package:evira_e_commerce/features/customer_service/ui/screen/customer_service_screen.dart';
 import 'package:evira_e_commerce/features/error/ui/screen/error_screen.dart';
+import 'package:evira_e_commerce/features/help_center/ui/screen/help_center_screen.dart';
 import 'package:evira_e_commerce/features/home/ui/bloc/home_products_bloc.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
@@ -87,6 +90,8 @@ class AppPaths {
   static final String language = '/language';
   static final String inviteFriends = '/inviteFriends';
   static final String privacyPolicy = '/privacyPolicy';
+  static final String helpCenter = '/helpCenter';
+  static final String customerService = '/customerService';
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -109,7 +114,7 @@ class GoRouterRefreshStream extends ChangeNotifier {
 class AppRouter {
   static GoRouter createRouter(AppFlowCubit appFlowCubit, String path) {
     return GoRouter(
-      initialLocation: AppPaths.profile,
+      initialLocation: AppPaths.customerService,
       refreshListenable: GoRouterRefreshStream(appFlowCubit.stream),
       routes: <RouteBase>[
         ShellRoute(
@@ -165,6 +170,18 @@ class AppRouter {
           builder: (context, state) => const LanguageScreen(),
         ),
 
+        GoRoute(
+          path: AppPaths.customerService,
+          builder: (context, state) => BlocProvider(
+            create: (context) => getIt<CustomerServiceBloc>(),
+            child: const CustomerServiceScreen(),
+          ),
+        ),
+
+        GoRoute(
+          path: AppPaths.helpCenter,
+          builder: (context, state) => const HelpCenterScreen(),
+        ),
         GoRoute(
           path: AppPaths.inviteFriends,
           builder: (context, state) => BlocProvider(

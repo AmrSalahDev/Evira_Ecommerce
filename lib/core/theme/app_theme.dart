@@ -39,6 +39,9 @@ class AppTheme {
         foregroundColor: WidgetStateProperty.all(AppColors.lightText),
       ),
     ),
+    bottomSheetTheme: BottomSheetThemeData(
+      dragHandleColor: AppColors.lightDivider,
+    ),
   );
 
   static ThemeData dark = ThemeData(
@@ -76,6 +79,9 @@ class AppTheme {
       confirmButtonStyle: ButtonStyle(
         foregroundColor: WidgetStateProperty.all(AppColors.darkText),
       ),
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      dragHandleColor: AppColors.darkDivider,
     ),
   );
 }

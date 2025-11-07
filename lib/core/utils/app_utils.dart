@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AppUtils {
   AppUtils._();
@@ -77,5 +78,23 @@ class AppUtils {
     }
 
     return Color(int.parse(hexColor, radix: 16));
+  }
+
+  static String getDateGroup(DateTime date) {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final messageDate = DateTime(date.year, date.month, date.day);
+
+    if (messageDate == today) {
+      return 'Today';
+    }
+
+    final yesterday = today.subtract(const Duration(days: 1));
+    if (messageDate == yesterday) {
+      return 'Yesterday';
+    }
+
+    // For any other date, format it nicely
+    return DateFormat('MMMM dd, yyyy').format(date);
   }
 }
