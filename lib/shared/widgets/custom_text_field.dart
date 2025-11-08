@@ -22,6 +22,7 @@ class CustomTextField extends StatefulWidget {
   final String? fieldKey;
   final Widget? suffixLoading;
   final bool? isSuffixLoading;
+  final String? initialValue;
 
   const CustomTextField({
     super.key,
@@ -40,6 +41,7 @@ class CustomTextField extends StatefulWidget {
     this.fieldKey,
     this.suffixLoading,
     this.isSuffixLoading,
+    this.initialValue,
   });
 
   @override
@@ -54,6 +56,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   void initState() {
     super.initState();
+    if (widget.initialValue != null && widget.controller != null) {
+      widget.controller!.text = widget.initialValue!;
+    }
     _focusNode.addListener(() {
       setState(() {});
     });

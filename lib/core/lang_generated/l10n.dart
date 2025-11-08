@@ -1213,6 +1213,11 @@ class EviraLang {
   String get message {
     return Intl.message('Message...', name: 'message', desc: '', args: []);
   }
+
+  /// `Update`
+  String get update {
+    return Intl.message('Update', name: 'update', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

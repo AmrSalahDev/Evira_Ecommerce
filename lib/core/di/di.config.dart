@@ -52,6 +52,14 @@ import 'package:evira_e_commerce/features/customer_service/domain/usecases/send_
     as _i788;
 import 'package:evira_e_commerce/features/customer_service/ui/bloc/customer_service_bloc.dart'
     as _i438;
+import 'package:evira_e_commerce/features/edit_profile/data/repo/edit_profile_repo_impl.dart'
+    as _i597;
+import 'package:evira_e_commerce/features/edit_profile/domain/repo/edit_profile_repo.dart'
+    as _i1055;
+import 'package:evira_e_commerce/features/edit_profile/domain/usecases/update_profile_usecase.dart'
+    as _i723;
+import 'package:evira_e_commerce/features/edit_profile/ui/bloc/edit_profile_bloc.dart'
+    as _i575;
 import 'package:evira_e_commerce/features/fill_profile/data/repos/fill_profile_repo_impl.dart'
     as _i133;
 import 'package:evira_e_commerce/features/fill_profile/data/repos/image_picker_repo_impl.dart'
@@ -326,6 +334,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i563.SpecialOffersRepo>(
       () => _i752.SpecialOffersRepoImpl(gh<_i64.SpecialOffersDatasource>()),
     );
+    gh.lazySingleton<_i1055.EditProfileRepo>(() => _i597.EditProfileRepoImpl());
     gh.lazySingleton<_i406.InviteFriendsRepo>(
       () => _i798.InviteFriendsRepoImpl(),
     );
@@ -450,6 +459,11 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i524.OnFavoritesChangesUsecase>(
       () => _i524.OnFavoritesChangesUsecase(gh<_i603.WishlistRepo>()),
+    );
+    gh.factory<_i723.UpdateProfileUsecase>(
+      () => _i723.UpdateProfileUsecase(
+        editProfileRepo: gh<_i1055.EditProfileRepo>(),
+      ),
     );
     gh.factory<_i822.GetFriendsUsecase>(
       () => _i822.GetFriendsUsecase(
@@ -590,6 +604,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i629.MarkNotificationsAsSeenUsecase>(
       () => _i629.MarkNotificationsAsSeenUsecase(gh<_i305.NotificationRepo>()),
+    );
+    gh.factory<_i575.EditProfileBloc>(
+      () => _i575.EditProfileBloc(gh<_i723.UpdateProfileUsecase>()),
     );
     gh.factory<_i472.MostPopularBloc>(
       () => _i472.MostPopularBloc(

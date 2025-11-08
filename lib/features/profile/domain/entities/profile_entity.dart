@@ -16,4 +16,14 @@ class ProfileEntity {
     required this.gender,
     required this.profileImage,
   });
+
+  ProfileEntity.empty({
+    this.fullname = '',
+    this.nickname = '',
+    this.dateOfBirth = '',
+    this.anotherEmail = '',
+    this.phone = '',
+    this.gender = '',
+    this.profileImage = '',
+  });
 }

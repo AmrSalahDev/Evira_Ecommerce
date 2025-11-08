@@ -31,6 +31,18 @@ class ProfileModel {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'fullname': fullname,
+      'nickname': nickname,
+      'dateOfBirth': dateOfBirth,
+      'anotherEmail': anotherEmail,
+      'phone': phone,
+      'gender': gender,
+      'profileImage': profileImage,
+    };
+  }
+
   ProfileEntity toEntity() {
     return ProfileEntity(
       fullname: fullname,

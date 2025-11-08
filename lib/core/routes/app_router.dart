@@ -8,6 +8,8 @@ import 'package:evira_e_commerce/features/category_view/ui/bloc/category_view_bl
 import 'package:evira_e_commerce/features/category_view/ui/screen/category_view_screen.dart';
 import 'package:evira_e_commerce/features/customer_service/ui/bloc/customer_service_bloc.dart';
 import 'package:evira_e_commerce/features/customer_service/ui/screen/customer_service_screen.dart';
+import 'package:evira_e_commerce/features/edit_profile/ui/bloc/edit_profile_bloc.dart';
+import 'package:evira_e_commerce/features/edit_profile/ui/screen/edit_profile_screen.dart';
 import 'package:evira_e_commerce/features/error/ui/screen/error_screen.dart';
 import 'package:evira_e_commerce/features/help_center/ui/screen/help_center_screen.dart';
 import 'package:evira_e_commerce/features/home/ui/bloc/home_products_bloc.dart';
@@ -92,6 +94,7 @@ class AppPaths {
   static final String privacyPolicy = '/privacyPolicy';
   static final String helpCenter = '/helpCenter';
   static final String customerService = '/customerService';
+  static final String editProfile = '/editProfile';
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -114,7 +117,7 @@ class GoRouterRefreshStream extends ChangeNotifier {
 class AppRouter {
   static GoRouter createRouter(AppFlowCubit appFlowCubit, String path) {
     return GoRouter(
-      initialLocation: AppPaths.customerService,
+      initialLocation: AppPaths.profile,
       refreshListenable: GoRouterRefreshStream(appFlowCubit.stream),
       routes: <RouteBase>[
         ShellRoute(
@@ -168,6 +171,18 @@ class AppRouter {
         GoRoute(
           path: AppPaths.language,
           builder: (context, state) => const LanguageScreen(),
+        ),
+
+        GoRoute(
+          path: AppPaths.editProfile,
+          builder: (context, state) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => getIt<TextFieldCubit>()),
+              BlocProvider(create: (context) => getIt<EditProfileBloc>()),
+              BlocProvider(create: (context) => getIt<ProfileInfoBloc>()),
+            ],
+            child: const EditProfileScreen(),
+          ),
         ),
 
         GoRoute(

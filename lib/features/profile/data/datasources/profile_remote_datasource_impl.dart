@@ -31,6 +31,8 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
     await supabase.auth.updateUser(
       UserAttributes(data: {'profileImage': publicUrl}),
     );
+
+    await supabase.auth.refreshSession();
   }
 
   @override
@@ -42,7 +44,8 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
     if (url == null) return null;
 
     // Force refresh cached image url by appending timestamp
-    return "$url?time=${DateTime.now().millisecondsSinceEpoch}";
+    //return "$url?time=${DateTime.now().millisecondsSinceEpoch}";
+    return url;
   }
 
   @override

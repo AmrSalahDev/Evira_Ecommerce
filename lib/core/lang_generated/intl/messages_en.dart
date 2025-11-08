@@ -267,6 +267,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "twitter": MessageLookupByLibrary.simpleMessage("Twitter"),
     "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
     "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
+    "update": MessageLookupByLibrary.simpleMessage("Update"),
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),
     "viaEmail": MessageLookupByLibrary.simpleMessage("via Email:"),
     "viaSMS": MessageLookupByLibrary.simpleMessage("via SMS:"),
