@@ -4,6 +4,10 @@ import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/routes/args/category_view_screen_args.dart';
 import 'package:evira_e_commerce/core/routes/args/no_internet_screen_args.dart';
 import 'package:evira_e_commerce/core/routes/args/product_details_screen_args.dart';
+import 'package:evira_e_commerce/features/address/ui/bloc/address_bloc.dart';
+import 'package:evira_e_commerce/features/address/ui/bloc/location_bloc.dart';
+import 'package:evira_e_commerce/features/address/ui/screens/add_new_address_screen.dart';
+import 'package:evira_e_commerce/features/address/ui/screens/address_screen.dart';
 import 'package:evira_e_commerce/features/category_view/ui/bloc/category_view_bloc.dart';
 import 'package:evira_e_commerce/features/category_view/ui/screen/category_view_screen.dart';
 import 'package:evira_e_commerce/features/customer_service/ui/bloc/customer_service_bloc.dart';
@@ -95,6 +99,8 @@ class AppPaths {
   static final String helpCenter = '/helpCenter';
   static final String customerService = '/customerService';
   static final String editProfile = '/editProfile';
+  static final String address = '/address';
+  static final String addNewAddress = '/addNewAddress';
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -117,7 +123,7 @@ class GoRouterRefreshStream extends ChangeNotifier {
 class AppRouter {
   static GoRouter createRouter(AppFlowCubit appFlowCubit, String path) {
     return GoRouter(
-      initialLocation: AppPaths.profile,
+      initialLocation: AppPaths.addNewAddress,
       refreshListenable: GoRouterRefreshStream(appFlowCubit.stream),
       routes: <RouteBase>[
         ShellRoute(
@@ -171,6 +177,26 @@ class AppRouter {
         GoRoute(
           path: AppPaths.language,
           builder: (context, state) => const LanguageScreen(),
+        ),
+
+        GoRoute(
+          path: AppPaths.addNewAddress,
+          builder: (context, state) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => getIt<LocationBloc>()),
+              BlocProvider(create: (context) => getIt<AddressBloc>()),
+              BlocProvider(create: (context) => getIt<TextFieldCubit>()),
+            ],
+            child: const AddNewAddressScreen(),
+          ),
+        ),
+
+        GoRoute(
+          path: AppPaths.address,
+          builder: (context, state) => BlocProvider(
+            create: (context) => getIt<AddressBloc>(),
+            child: const AddressScreen(),
+          ),
         ),
 
         GoRoute(

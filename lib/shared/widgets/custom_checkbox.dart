@@ -6,7 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomCheckbox extends StatefulWidget {
   final String? title;
   final Function(bool value)? onChecked;
-  const CustomCheckbox({super.key, this.title, this.onChecked});
+  final bool? value;
+  const CustomCheckbox({super.key, this.title, this.onChecked, this.value});
 
   @override
   State<CustomCheckbox> createState() => _CustomCheckboxState();
@@ -14,6 +15,18 @@ class CustomCheckbox extends StatefulWidget {
 
 class _CustomCheckboxState extends State<CustomCheckbox> {
   bool isChecked = false;
+
+  @override
+  void initState() {
+    isChecked = widget.value ?? false;
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant CustomCheckbox oldWidget) {
+    isChecked = widget.value ?? false;
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   Widget build(BuildContext context) {

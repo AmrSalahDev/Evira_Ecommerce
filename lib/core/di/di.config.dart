@@ -16,6 +16,26 @@ import 'package:evira_e_commerce/core/services/shared_preferences_service.dart'
 import 'package:evira_e_commerce/core/services/social_auth_service.dart'
     as _i769;
 import 'package:evira_e_commerce/core/services/toast_service.dart' as _i101;
+import 'package:evira_e_commerce/features/address/data/datasource/address_remote_datasource_impl.dart'
+    as _i456;
+import 'package:evira_e_commerce/features/address/data/repo/address_repo_impl.dart'
+    as _i265;
+import 'package:evira_e_commerce/features/address/domain/datasource/address_remote_datasource.dart'
+    as _i703;
+import 'package:evira_e_commerce/features/address/domain/repo/address_repo.dart'
+    as _i968;
+import 'package:evira_e_commerce/features/address/domain/usecases/add_address_usecaes.dart'
+    as _i135;
+import 'package:evira_e_commerce/features/address/domain/usecases/get_addresses_usecase.dart'
+    as _i622;
+import 'package:evira_e_commerce/features/address/domain/usecases/get_current_address_details_usecase.dart'
+    as _i188;
+import 'package:evira_e_commerce/features/address/domain/usecases/get_current_location_usecase.dart'
+    as _i556;
+import 'package:evira_e_commerce/features/address/ui/bloc/address_bloc.dart'
+    as _i374;
+import 'package:evira_e_commerce/features/address/ui/bloc/location_bloc.dart'
+    as _i484;
 import 'package:evira_e_commerce/features/category_view/data/datasources/category_view_remote_datasource_impl.dart'
     as _i103;
 import 'package:evira_e_commerce/features/category_view/data/repos/category_view_repo_impl.dart'
@@ -294,6 +314,9 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    gh.factory<_i556.GetCurrentLocationUsecase>(
+      () => _i556.GetCurrentLocationUsecase(),
+    );
     gh.factory<_i672.OnboardingCubit>(() => _i672.OnboardingCubit());
     gh.factory<_i418.FingerprintCubit>(() => _i418.FingerprintCubit());
     gh.factory<_i669.TextFieldCubit>(() => _i669.TextFieldCubit());
@@ -333,6 +356,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i563.SpecialOffersRepo>(
       () => _i752.SpecialOffersRepoImpl(gh<_i64.SpecialOffersDatasource>()),
+    );
+    gh.lazySingleton<_i703.AddressRemoteDatasource>(
+      () => _i456.AddressRemoteDatasourceImpl(),
     );
     gh.lazySingleton<_i1055.EditProfileRepo>(() => _i597.EditProfileRepoImpl());
     gh.lazySingleton<_i406.InviteFriendsRepo>(
@@ -386,6 +412,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i831.VerifyPinUsecase>(
       () => _i831.VerifyPinUsecase(gh<_i1030.CreatePinRepo>()),
     );
+    gh.factory<_i484.LocationBloc>(
+      () => _i484.LocationBloc(gh<_i556.GetCurrentLocationUsecase>()),
+    );
     gh.factory<_i1000.HomeBannerCubit>(
       () => _i1000.HomeBannerCubit(gh<_i167.GetHomeBannersUseCase>()),
     );
@@ -402,6 +431,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i1018.GetSpecialOffersUsecase(
         specialOffersRepo: gh<_i563.SpecialOffersRepo>(),
       ),
+    );
+    gh.lazySingleton<_i968.AddressRepo>(
+      () => _i265.AddressRepoImpl(gh<_i703.AddressRemoteDatasource>()),
     );
     gh.lazySingleton<_i907.ProfileRepo>(
       () => _i323.ProfileRepoImpl(gh<_i948.ProfileRemoteDatasource>()),
@@ -453,6 +485,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i546.SpecialOffersBloc>(
       () => _i546.SpecialOffersBloc(gh<_i1018.GetSpecialOffersUsecase>()),
+    );
+    gh.factory<_i135.AddAddressUsecaes>(
+      () => _i135.AddAddressUsecaes(gh<_i968.AddressRepo>()),
+    );
+    gh.factory<_i622.GetAddressesUsecase>(
+      () => _i622.GetAddressesUsecase(gh<_i968.AddressRepo>()),
+    );
+    gh.factory<_i188.GetCurrentAddressDetailsUsecase>(
+      () => _i188.GetCurrentAddressDetailsUsecase(gh<_i968.AddressRepo>()),
     );
     gh.factory<_i940.GetProductsFromWishlistUsecase>(
       () => _i940.GetProductsFromWishlistUsecase(gh<_i603.WishlistRepo>()),
@@ -625,6 +666,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i168.GetNotificationsUsecase>(
       () => _i168.GetNotificationsUsecase(gh<_i305.NotificationRepo>()),
+    );
+    gh.factory<_i374.AddressBloc>(
+      () => _i374.AddressBloc(
+        gh<_i135.AddAddressUsecaes>(),
+        gh<_i622.GetAddressesUsecase>(),
+        gh<_i188.GetCurrentAddressDetailsUsecase>(),
+      ),
     );
     gh.factory<_i630.SignupCubit>(
       () => _i630.SignupCubit(gh<_i109.SignupUsecase>()),

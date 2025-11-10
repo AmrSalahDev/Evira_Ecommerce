@@ -158,5 +158,14 @@
     "twitter":"Twitter",
     "instagram":"Instagram",
     "message":"Message...",
-    "update":"Update"
+    "update":"Update",
+    "addNewAddress":"Add New Address",
+    "addressDetails":"Address Details",
+    "nameAddress":"Name Address",
+    "makeDefaultAddress":"Make this as the default address",
+    "add":"Add",
+    "required":"Required",
+    "defaultt":"Default",
+    "noAddressesYet":"No addresses yet. Add your first address!",
+    "unNamed":"Untitled Address"
 }

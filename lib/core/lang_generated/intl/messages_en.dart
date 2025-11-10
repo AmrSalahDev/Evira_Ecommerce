@@ -29,14 +29,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "acountSetupSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Account setup successful!",
     ),
+    "add": MessageLookupByLibrary.simpleMessage("Add"),
     "addFingerprint": MessageLookupByLibrary.simpleMessage(
       "Add a fingerprint to make your account\nmore secure.",
     ),
+    "addNewAddress": MessageLookupByLibrary.simpleMessage("Add New Address"),
     "addPin": MessageLookupByLibrary.simpleMessage(
       "Add a PIN number to make your account more secure.",
     ),
     "addToCart": MessageLookupByLibrary.simpleMessage("Add to Cart"),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "addressDetails": MessageLookupByLibrary.simpleMessage("Address Details"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
@@ -92,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "customerService": MessageLookupByLibrary.simpleMessage("Customer Service"),
     "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
+    "defaultt": MessageLookupByLibrary.simpleMessage("Default"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "description": MessageLookupByLibrary.simpleMessage("Description"),
     "done": MessageLookupByLibrary.simpleMessage("Done"),
@@ -156,12 +160,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "logoutDescription": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to logout?",
     ),
+    "makeDefaultAddress": MessageLookupByLibrary.simpleMessage(
+      "Make this as the default address",
+    ),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "message": MessageLookupByLibrary.simpleMessage("Message..."),
     "mostPopular": MessageLookupByLibrary.simpleMessage("Most Popular"),
+    "nameAddress": MessageLookupByLibrary.simpleMessage("Name Address"),
     "networkError": MessageLookupByLibrary.simpleMessage("Network error"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "nickName": MessageLookupByLibrary.simpleMessage("Nickname"),
+    "noAddressesYet": MessageLookupByLibrary.simpleMessage(
+      "No addresses yet. Add your first address!",
+    ),
     "noContactsFound": MessageLookupByLibrary.simpleMessage(
       "No contacts found!",
     ),
@@ -220,6 +231,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "rating": MessageLookupByLibrary.simpleMessage("Rating"),
     "recent": MessageLookupByLibrary.simpleMessage("Recent"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "required": MessageLookupByLibrary.simpleMessage("Required"),
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
     "resendCode": MessageLookupByLibrary.simpleMessage("Resend code in"),
     "reset": MessageLookupByLibrary.simpleMessage("Reset"),
@@ -265,6 +277,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "totalPrice": MessageLookupByLibrary.simpleMessage("Total Price"),
     "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
     "twitter": MessageLookupByLibrary.simpleMessage("Twitter"),
+    "unNamed": MessageLookupByLibrary.simpleMessage("Untitled Address"),
     "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
     "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
     "update": MessageLookupByLibrary.simpleMessage("Update"),

@@ -15,6 +15,8 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
 
   String get title => "";
 
+  bool get addPadding => true;
+
   Widget? buildBottomNavigationBar() => null;
 
   List<Widget>? buildActions() => null;
@@ -69,7 +71,9 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
           : null,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 20.w, right: 20.w),
+          padding: addPadding
+              ? EdgeInsets.only(left: 20.w, right: 20.w)
+              : EdgeInsets.zero,
           child: buildBody(context),
         ),
       ),

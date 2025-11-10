@@ -1218,6 +1218,81 @@ class EviraLang {
   String get update {
     return Intl.message('Update', name: 'update', desc: '', args: []);
   }
+
+  /// `Add New Address`
+  String get addNewAddress {
+    return Intl.message(
+      'Add New Address',
+      name: 'addNewAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address Details`
+  String get addressDetails {
+    return Intl.message(
+      'Address Details',
+      name: 'addressDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name Address`
+  String get nameAddress {
+    return Intl.message(
+      'Name Address',
+      name: 'nameAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Make this as the default address`
+  String get makeDefaultAddress {
+    return Intl.message(
+      'Make this as the default address',
+      name: 'makeDefaultAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add`
+  String get add {
+    return Intl.message('Add', name: 'add', desc: '', args: []);
+  }
+
+  /// `Required`
+  String get required {
+    return Intl.message('Required', name: 'required', desc: '', args: []);
+  }
+
+  /// `Default`
+  String get defaultt {
+    return Intl.message('Default', name: 'defaultt', desc: '', args: []);
+  }
+
+  /// `No addresses yet. Add your first address!`
+  String get noAddressesYet {
+    return Intl.message(
+      'No addresses yet. Add your first address!',
+      name: 'noAddressesYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Untitled Address`
+  String get unNamed {
+    return Intl.message(
+      'Untitled Address',
+      name: 'unNamed',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

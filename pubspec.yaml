@@ -83,6 +83,11 @@ dependencies:
   url_launcher: ^6.3.2
   expansion_tile_card: ^3.0.0
   grouped_list: ^6.0.0
+  flutter_map: ^8.2.2
+  latlong2: ^0.9.1
+  geolocator: ^14.0.2
+  geocoding: ^4.0.0
+  animate_do: ^4.2.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0
