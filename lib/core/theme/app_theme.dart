@@ -42,6 +42,10 @@ class AppTheme {
     bottomSheetTheme: BottomSheetThemeData(
       dragHandleColor: AppColors.lightDivider,
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      fillColor: AppColors.lightTextField,
+      filled: true,
+    ),
   );
 
   static ThemeData dark = ThemeData(
@@ -82,6 +86,10 @@ class AppTheme {
     ),
     bottomSheetTheme: BottomSheetThemeData(
       dragHandleColor: AppColors.darkDivider,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      fillColor: AppColors.darkTextField,
+      filled: true,
     ),
   );
 }

@@ -8,13 +8,7 @@ class GetCurrentLocationUsecase {
     // Check if location service is enabled
     bool serviceEnabled = await LocationUtils.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      //return const Left(LocationFailure('Location services are disabled'));
-    }
-
-    // Request permission
-    bool hasPermission = await LocationUtils.requestLocationPermission();
-    if (!hasPermission) {
-      //return const Left(LocationFailure('Location permission denied'));
+      await LocationUtils.requestLocationPermission();
     }
 
     // Get current position

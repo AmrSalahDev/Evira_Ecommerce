@@ -32,6 +32,6 @@ class AddressRepoImpl implements AddressRepo {
   @override
   Future<String> getCurrentAddressDetails(LatLng position) async {
     final address = await LocationUtils.getAddressFromLatLng(position);
-    return '${address['street']}';
+    return '${address['street']}, PC ${address['postalCode']}';
   }
 }

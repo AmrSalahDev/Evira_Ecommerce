@@ -23,6 +23,8 @@ class CustomTextField extends StatefulWidget {
   final Widget? suffixLoading;
   final bool? isSuffixLoading;
   final String? initialValue;
+  final String? label;
+  final int? maxLength;
 
   const CustomTextField({
     super.key,
@@ -42,6 +44,8 @@ class CustomTextField extends StatefulWidget {
     this.suffixLoading,
     this.isSuffixLoading,
     this.initialValue,
+    this.label,
+    this.maxLength,
   });
 
   @override
@@ -86,71 +90,99 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ? context.iconColor
         : context.hintColor;
 
-    return TextFormField(
-      onTap: widget.onTap,
-      obscuringCharacter: '●',
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (widget.label != null) ...[
+          Text(
+            widget.label!,
+            style: TextStyle(
+              color: context.textColor,
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          SizedBox(height: 10.h),
+        ],
+        TextFormField(
+          onTap: widget.onTap,
+          obscuringCharacter: '●',
+          maxLength: widget.maxLength,
 
-      readOnly: widget.readOnly ?? false,
-      keyboardType: widget.keyboardType,
-      inputFormatters: widget.inputFormatters,
-      style: GoogleFonts.urbanist(
-        color: context.textColor,
-        fontSize: 18.sp,
-        fontWeight: FontWeight.w500,
-      ),
-      focusNode: _focusNode,
-      obscureText: widget.obscureText == true && !_obscureText,
-      controller: widget.controller,
-      validator: widget.validator,
-      onChanged: (value) {
-        if (widget.readOnly != true && widget.fieldKey != null) {
-          context.read<TextFieldCubit>().updateField(widget.fieldKey!, value);
-        }
-      },
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: context.textFieldColor,
-        border: OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(15.r),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: context.textFieldBorderColor),
-          borderRadius: BorderRadius.circular(15.r),
-        ),
-        hintText: widget.hintText,
-        hintStyle: GoogleFonts.urbanist(
-          color: context.textHintColor,
-          fontSize: 17.sp,
-          fontWeight: FontWeight.w400,
-        ),
+          readOnly: widget.readOnly ?? false,
+          keyboardType: widget.keyboardType,
+          inputFormatters: widget.inputFormatters,
+          style: GoogleFonts.urbanist(
+            color: context.textColor,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w500,
+          ),
+          focusNode: _focusNode,
+          obscureText: widget.obscureText == true && !_obscureText,
+          controller: widget.controller,
+          validator: widget.validator,
+          onChanged: (value) {
+            if (widget.readOnly != true && widget.fieldKey != null) {
+              context.read<TextFieldCubit>().updateField(
+                widget.fieldKey!,
+                value,
+              );
+            }
+          },
+          decoration: InputDecoration(
+            filled: true,
+            counter: null,
+            fillColor: context.textFieldColor,
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(15.r),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: context.textFieldBorderColor),
+              borderRadius: BorderRadius.circular(15.r),
+            ),
+            hintText: widget.hintText,
+            hintStyle: GoogleFonts.urbanist(
+              color: context.textHintColor,
+              fontSize: 17.sp,
+              fontWeight: FontWeight.w400,
+            ),
 
-        contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h),
-        prefixIcon: widget.perfixIcon != null
-            ? Icon(widget.perfixIcon, color: iconColor, size: 22.h)
-            : null,
-        suffixIcon: widget.obscureText != null
-            ? GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _obscureText = !_obscureText;
-                  });
-                },
-                child: Icon(
-                  _obscureText ? Icons.visibility : Icons.visibility_off,
-                  color: iconColor,
-                  size: 27.h,
-                ),
-              )
-            : widget.isSuffixLoading == true
-            ? widget.suffixLoading
-            : widget.suffixIcon != null
-            ? GestureDetector(
-                onTap: widget.onSuffixTap,
-                child: Icon(widget.suffixIcon, color: iconColor, size: 24.h),
-              )
-            : widget.suffix,
-      ),
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 20.w,
+              vertical: 25.h,
+            ),
+            prefixIcon: widget.perfixIcon != null
+                ? Icon(widget.perfixIcon, color: iconColor, size: 22.h)
+                : null,
+            suffixIcon: widget.obscureText != null
+                ? GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                    child: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off,
+                      color: iconColor,
+                      size: 27.h,
+                    ),
+                  )
+                : widget.isSuffixLoading == true
+                ? widget.suffixLoading
+                : widget.suffixIcon != null
+                ? GestureDetector(
+                    onTap: widget.onSuffixTap,
+                    child: Icon(
+                      widget.suffixIcon,
+                      color: iconColor,
+                      size: 24.h,
+                    ),
+                  )
+                : widget.suffix,
+          ),
+        ),
+      ],
     );
   }
 }

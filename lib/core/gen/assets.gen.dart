@@ -18,8 +18,15 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/amazon_logo.svg
+  SvgGenImage get amazonLogo =>
+      const SvgGenImage('assets/icons/amazon_logo.svg');
+
   /// File path: assets/icons/apple.svg
   SvgGenImage get apple => const SvgGenImage('assets/icons/apple.svg');
+
+  /// File path: assets/icons/card_chip.svg
+  SvgGenImage get cardChip => const SvgGenImage('assets/icons/card_chip.svg');
 
   /// File path: assets/icons/cart.png
   AssetGenImage get cart => const AssetGenImage('assets/icons/cart.png');
@@ -30,6 +37,10 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/close.svg
   SvgGenImage get close => const SvgGenImage('assets/icons/close.svg');
+
+  /// File path: assets/icons/contactless_logo.svg
+  SvgGenImage get contactlessLogo =>
+      const SvgGenImage('assets/icons/contactless_logo.svg');
 
   /// File path: assets/icons/customer_service.svg
   SvgGenImage get customerService =>
@@ -77,6 +88,10 @@ class $AssetsIconsGen {
   SvgGenImage get locationOutline =>
       const SvgGenImage('assets/icons/location_outline.svg');
 
+  /// File path: assets/icons/location_pin.svg
+  SvgGenImage get locationPin =>
+      const SvgGenImage('assets/icons/location_pin.svg');
+
   /// File path: assets/icons/logout_outline.svg
   SvgGenImage get logoutOutline =>
       const SvgGenImage('assets/icons/logout_outline.svg');
@@ -123,12 +138,19 @@ class $AssetsIconsGen {
   SvgGenImage get slidersSimple =>
       const SvgGenImage('assets/icons/sliders-simple.svg');
 
+  /// File path: assets/icons/triangle_shapes.png
+  AssetGenImage get triangleShapes =>
+      const AssetGenImage('assets/icons/triangle_shapes.png');
+
   /// File path: assets/icons/twitter.svg
   SvgGenImage get twitter => const SvgGenImage('assets/icons/twitter.svg');
 
   /// File path: assets/icons/user_outline.svg
   SvgGenImage get userOutline =>
       const SvgGenImage('assets/icons/user_outline.svg');
+
+  /// File path: assets/icons/visa_logo.svg
+  SvgGenImage get visaLogo => const SvgGenImage('assets/icons/visa_logo.svg');
 
   /// File path: assets/icons/wallet.png
   AssetGenImage get wallet => const AssetGenImage('assets/icons/wallet.png');
@@ -149,10 +171,13 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<dynamic> get values => [
+    amazonLogo,
     apple,
+    cardChip,
     cart,
     cartActive,
     close,
+    contactlessLogo,
     customerService,
     darkmodeOutline,
     facebook,
@@ -166,6 +191,7 @@ class $AssetsIconsGen {
     inviteFriendsOutline,
     languageOutline,
     locationOutline,
+    locationPin,
     logoutOutline,
     notificationOutline,
     orders,
@@ -179,8 +205,10 @@ class $AssetsIconsGen {
     search,
     securityOutline,
     slidersSimple,
+    triangleShapes,
     twitter,
     userOutline,
+    visaLogo,
     wallet,
     walletActive,
     walletOutline,

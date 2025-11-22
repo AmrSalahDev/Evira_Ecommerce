@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Add a fingerprint to make your account\nmore secure.",
     ),
     "addNewAddress": MessageLookupByLibrary.simpleMessage("Add New Address"),
+    "addNewCard": MessageLookupByLibrary.simpleMessage("Add New Card"),
     "addPin": MessageLookupByLibrary.simpleMessage(
       "Add a PIN number to make your account more secure.",
     ),
@@ -44,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "appUpdates": MessageLookupByLibrary.simpleMessage("App Updates"),
     "apply": MessageLookupByLibrary.simpleMessage("Apply"),
     "areYouSureToDelete": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to delete?",
@@ -52,8 +54,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "biometricAreNotSetUpTitle": MessageLookupByLibrary.simpleMessage(
       "Biometric aren\'t set up",
     ),
+    "blackcode": MessageLookupByLibrary.simpleMessage("Black Code"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "cardHolderName": MessageLookupByLibrary.simpleMessage("Card Holder name"),
+    "cardName": MessageLookupByLibrary.simpleMessage("Card Name"),
+    "cardNumber": MessageLookupByLibrary.simpleMessage("Card Number"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+    "cashback": MessageLookupByLibrary.simpleMessage("Cashback"),
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "clear": MessageLookupByLibrary.simpleMessage("Clear"),
     "clearAll": MessageLookupByLibrary.simpleMessage("Clear All"),
@@ -93,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Create your new password",
     ),
     "customerService": MessageLookupByLibrary.simpleMessage("Customer Service"),
+    "cvv": MessageLookupByLibrary.simpleMessage("CVV"),
     "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
     "defaultt": MessageLookupByLibrary.simpleMessage("Default"),
@@ -110,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "errorverifyingPIN": MessageLookupByLibrary.simpleMessage(
       "Error verifying PIN",
     ),
+    "expiryDate": MessageLookupByLibrary.simpleMessage("Expiry Date"),
     "facebook": MessageLookupByLibrary.simpleMessage("Facebook"),
     "failedToSavePIN": MessageLookupByLibrary.simpleMessage(
       "Failed to save PIN",
@@ -133,6 +142,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "gender": MessageLookupByLibrary.simpleMessage("Gender"),
     "general": MessageLookupByLibrary.simpleMessage("General"),
+    "general_notification": MessageLookupByLibrary.simpleMessage(
+      "General Notification",
+    ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
     "goodAfternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon "),
     "goodEvening": MessageLookupByLibrary.simpleMessage("Good Evening "),
@@ -153,6 +165,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "invited": MessageLookupByLibrary.simpleMessage("Invited"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "letsYouIn": MessageLookupByLibrary.simpleMessage("Let\'s you in"),
+    "locationPermissionDenied": MessageLookupByLibrary.simpleMessage(
+      "Location permission is denied.",
+    ),
+    "locationServicesDisabled": MessageLookupByLibrary.simpleMessage(
+      "Location services are disabled.",
+    ),
     "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
       "Login to your Account",
     ),
@@ -168,6 +186,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "mostPopular": MessageLookupByLibrary.simpleMessage("Most Popular"),
     "nameAddress": MessageLookupByLibrary.simpleMessage("Name Address"),
     "networkError": MessageLookupByLibrary.simpleMessage("Network error"),
+    "newServiceAvailable": MessageLookupByLibrary.simpleMessage(
+      "New service available",
+    ),
+    "newTipsAvailable": MessageLookupByLibrary.simpleMessage(
+      "New Tips Available",
+    ),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "nickName": MessageLookupByLibrary.simpleMessage("Nickname"),
     "noAddressesYet": MessageLookupByLibrary.simpleMessage(
@@ -217,6 +241,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Password too weak",
     ),
     "payment": MessageLookupByLibrary.simpleMessage("Payment"),
+    "payments": MessageLookupByLibrary.simpleMessage("Payments"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "pleaseEnterKeyword": MessageLookupByLibrary.simpleMessage(
       "Please enter a keyword",
@@ -224,6 +249,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "priceRange": MessageLookupByLibrary.simpleMessage("Price Range"),
     "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "promoAndDiscount": MessageLookupByLibrary.simpleMessage(
+      "Promo & Discount",
+    ),
     "putYourFinger": MessageLookupByLibrary.simpleMessage(
       "Please put your finger on the fingerprint\nscanner to get started",
     ),
@@ -263,6 +291,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "sold": MessageLookupByLibrary.simpleMessage("sold"),
     "sortAndFilter": MessageLookupByLibrary.simpleMessage("Sort & Filter"),
     "sortBy": MessageLookupByLibrary.simpleMessage("Sort By"),
+    "sound": MessageLookupByLibrary.simpleMessage("Sound"),
     "specialOffers": MessageLookupByLibrary.simpleMessage("Special Offers"),
     "stillNoInternetConnection": MessageLookupByLibrary.simpleMessage(
       "Still no internet connection.",
@@ -284,6 +313,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),
     "viaEmail": MessageLookupByLibrary.simpleMessage("via Email:"),
     "viaSMS": MessageLookupByLibrary.simpleMessage("via SMS:"),
+    "vibrate": MessageLookupByLibrary.simpleMessage("Vibrate"),
     "wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
     "website": MessageLookupByLibrary.simpleMessage("Website"),
     "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),

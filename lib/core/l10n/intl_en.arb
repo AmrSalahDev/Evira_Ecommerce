@@ -167,5 +167,24 @@
     "required":"Required",
     "defaultt":"Default",
     "noAddressesYet":"No addresses yet. Add your first address!",
-    "unNamed":"Untitled Address"
+    "unNamed":"Untitled Address",
+    "locationServicesDisabled":"Location services are disabled.",
+    "locationPermissionDenied":"Location permission is denied.",
+    "general_notification":"General Notification",
+    "sound":"Sound",
+    "vibrate":"Vibrate",
+    "promoAndDiscount":"Promo & Discount",
+    "payments":"Payments",
+    "cashback":"Cashback",
+    "appUpdates":"App Updates",
+    "newServiceAvailable":"New service available",
+    "newTipsAvailable":"New Tips Available",
+    "addNewCard":"Add New Card",
+    "cvv":"CVV",
+    "cardNumber":"Card Number",
+    "expiryDate":"Expiry Date",
+    "cardName":"Card Name",
+    "cardHolderName":"Card Holder name",
+    "blackcode":"Black Code"
+    
 }

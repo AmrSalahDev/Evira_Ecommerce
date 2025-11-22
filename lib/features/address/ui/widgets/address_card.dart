@@ -19,80 +19,78 @@ class AddressCard extends StatelessWidget {
         color: context.textFieldColor,
         borderRadius: BorderRadius.circular(15),
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
+      child: ListTile(
+        contentPadding: EdgeInsets.zero,
+        leading: Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: context.iconColor,
+            border: Border.all(color: context.cardColor, width: 7),
+          ),
+          child: Icon(Icons.location_on, color: context.cardColor),
+        ),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: context.iconColor,
-                        border: Border.all(color: context.cardColor, width: 7),
-                      ),
-                      child: Icon(Icons.location_on, color: context.cardColor),
-                    ),
-                    SizedBox(width: 12.w),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              address.name,
-                              style: TextStyle(
-                                fontSize: 20.sp,
-                                fontWeight: FontWeight.bold,
-                                color: context.textColor,
-                              ),
-                            ),
-                            if (address.isDefault) ...[
-                              SizedBox(width: 10.w),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8,
-                                  vertical: 5,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: context.cardColor,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Text(
-                                  EviraLang.of(context).defaultt,
-                                  style: TextStyle(
-                                    fontSize: 13.sp,
-                                    color: context.textColor,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ],
-                        ),
-                        SizedBox(height: 10.w),
-                        Text(
-                          address.address,
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            color: context.textSmallGrayColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                Text(
+                  address.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.bold,
+                    color: context.textColor,
+                  ),
                 ),
+                SizedBox(height: 5.h),
+                if (address.isDefault) ...[
+                  SizedBox(width: 10.w),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 5,
+                    ),
+                    decoration: BoxDecoration(
+                      color: context.cardColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      EviraLang.of(context).defaultt,
+                      style: TextStyle(
+                        fontSize: 13.sp,
+                        color: context.textColor,
+                      ),
+                    ),
+                  ),
+                ],
               ],
             ),
-          ),
-          IconButton(
-            onPressed: onTap,
-            icon: Icon(Icons.edit, color: context.iconColor),
-          ),
-        ],
+          ],
+        ),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (address.isDefault) SizedBox(height: 5.h),
+            Text(
+              address.address,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 16.sp,
+                color: context.textSmallGrayColor,
+              ),
+            ),
+          ],
+        ),
+        trailing: IconButton(
+          onPressed: onTap,
+          icon: Icon(Icons.edit, color: context.iconColor),
+        ),
       ),
     );
   }

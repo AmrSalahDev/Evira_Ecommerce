@@ -30,6 +30,9 @@ class _AddressScreenState extends State<AddressScreen>
   }
 
   @override
+  String get routeName => AppPaths.address;
+
+  @override
   String get title => EviraLang.of(context).address;
 
   @override
@@ -45,7 +48,7 @@ class _AddressScreenState extends State<AddressScreen>
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.easeOut,
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: 30.h),
+                  padding: EdgeInsets.only(bottom: 30.h, top: 10.h),
                   child: CustomButton(
                     title: EviraLang.of(context).addNewAddress,
                     onPressed: () => context.push(AppPaths.addNewAddress),
@@ -72,8 +75,7 @@ class _AddressScreenState extends State<AddressScreen>
       builder: (context, state) {
         if (state.isFetchingAddresses) {
           return const ShimmerAddressCard();
-        }
-        if (state.isFetchingAddresses == false) {
+        } else if (state.isFetchingAddresses == false) {
           if (state.addresses.isEmpty) {
             return Center(
               child: Text(
@@ -82,12 +84,22 @@ class _AddressScreenState extends State<AddressScreen>
               ),
             );
           }
-          return ListView.builder(
-            itemCount: state.addresses.length,
-            itemBuilder: (context, index) =>
-                AddressCard(address: state.addresses[index], onTap: () {}),
+          return RefreshIndicator(
+            color: context.iconColor,
+            backgroundColor: context.containerColor,
+            onRefresh: () async =>
+                context.read<AddressBloc>().add(GetAddressesEvent()),
+            child: ListView.builder(
+              itemCount: state.addresses.length,
+              itemBuilder: (context, index) =>
+                  AddressCard(address: state.addresses[index], onTap: () {}),
+            ),
           );
+        } else if (state.errorMessage ==
+            EviraLang.of(context).noInternetConnection) {
+          return ShimmerAddressCard();
         }
+
         return const SizedBox.shrink();
       },
     );

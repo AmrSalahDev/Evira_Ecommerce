@@ -1,12 +1,15 @@
+import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/gen/assets.gen.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
+import 'package:evira_e_commerce/core/routes/app_router.dart';
+import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/address/ui/bloc/address_bloc.dart';
 import 'package:evira_e_commerce/features/address/ui/bloc/location_bloc.dart';
 import 'package:evira_e_commerce/features/address/ui/widgets/address_form_sheet.dart';
 import 'package:evira_e_commerce/features/address/ui/widgets/map_widget.dart';
-import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
+import 'package:evira_e_commerce/shared/widgets/shimmer_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,6 +27,7 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen>
   @override
   void initState() {
     super.initState();
+    context.read<LocationBloc>().add(ListenToLocationServiceStatusEvent());
     context.read<LocationBloc>().add(GetCurrentLocationEvent());
   }
 
@@ -32,6 +36,9 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen>
 
   @override
   bool get addPadding => false;
+
+  @override
+  String? get routeName => AppPaths.addNewAddress;
 
   @override
   List<Widget>? buildActions() {
@@ -56,8 +63,30 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen>
           alignment: Alignment.topCenter,
           child: SizedBox(
             height: context.screenHeight * 0.4,
-            child: BlocBuilder<LocationBloc, LocationState>(
+            child: BlocConsumer<LocationBloc, LocationState>(
+              listener: (context, state) {
+                if (state is LocationError) {
+                  getIt<ToastService>().showErrorToast(
+                    message: state.message,
+                    context: context,
+                  );
+                }
+              },
               builder: (context, state) {
+                if (state is LocationLoading) {
+                  return ShimmerBox(
+                    height: context.screenHeight * 0.4,
+                    width: double.infinity,
+                    borderRadius: 0,
+                  );
+                }
+                if (state is LocationError) {
+                  return ShimmerBox(
+                    height: context.screenHeight * 0.4,
+                    width: double.infinity,
+                    borderRadius: 0,
+                  );
+                }
                 if (state is LocationLoaded) {
                   return MapWidget(initialPosition: state.position);
                 }

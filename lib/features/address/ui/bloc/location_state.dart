@@ -20,6 +20,15 @@ class LocationLoaded extends LocationState {
   List<Object> get props => [position];
 }
 
+final class LocationServiceStatusChanged extends LocationState {
+  final bool isEnabled;
+
+  const LocationServiceStatusChanged(this.isEnabled);
+
+  @override
+  List<Object> get props => [isEnabled];
+}
+
 class LocationError extends LocationState {
   final String message;
 

@@ -22,6 +22,9 @@ import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart'
 import 'package:evira_e_commerce/features/invite_friends/ui/bloc/invite_friends_bloc.dart';
 import 'package:evira_e_commerce/features/invite_friends/ui/screen/invite_friends_screen.dart';
 import 'package:evira_e_commerce/features/language/ui/screen/language_screen.dart';
+import 'package:evira_e_commerce/features/notification_settings/ui/screen/notification_settings_screen.dart';
+import 'package:evira_e_commerce/features/payment/ui/screens/add_new_card_screen.dart';
+import 'package:evira_e_commerce/features/payment/ui/screens/payment_screen.dart';
 import 'package:evira_e_commerce/features/privacy_policy/ui/screen/privacy_policy_screen.dart';
 import 'package:evira_e_commerce/features/profile/ui/bloc/profile_image_picker_bloc.dart';
 import 'package:evira_e_commerce/features/profile/ui/bloc/profile_info_bloc.dart';
@@ -101,6 +104,9 @@ class AppPaths {
   static final String editProfile = '/editProfile';
   static final String address = '/address';
   static final String addNewAddress = '/addNewAddress';
+  static final String notificationSettings = '/notificationSettings';
+  static final String addNewCard = '/addNewCard';
+  static final String payment = '/payment';
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -123,7 +129,7 @@ class GoRouterRefreshStream extends ChangeNotifier {
 class AppRouter {
   static GoRouter createRouter(AppFlowCubit appFlowCubit, String path) {
     return GoRouter(
-      initialLocation: AppPaths.addNewAddress,
+      initialLocation: AppPaths.addNewCard,
       refreshListenable: GoRouterRefreshStream(appFlowCubit.stream),
       routes: <RouteBase>[
         ShellRoute(
@@ -175,8 +181,23 @@ class AppRouter {
         ),
 
         GoRoute(
+          path: AppPaths.payment,
+          builder: (context, state) => const PaymentScreen(),
+        ),
+
+        GoRoute(
+          path: AppPaths.addNewCard,
+          builder: (context, state) => const AddNewCardScreen(),
+        ),
+
+        GoRoute(
           path: AppPaths.language,
           builder: (context, state) => const LanguageScreen(),
+        ),
+
+        GoRoute(
+          path: AppPaths.notificationSettings,
+          builder: (context, state) => const NotificationSettingsScreen(),
         ),
 
         GoRoute(

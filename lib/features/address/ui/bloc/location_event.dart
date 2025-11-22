@@ -8,3 +8,13 @@ sealed class LocationEvent extends Equatable {
 }
 
 class GetCurrentLocationEvent extends LocationEvent {}
+
+class ListenToLocationServiceStatusEvent extends LocationEvent {}
+
+class LocationServiceStatusChangedEvent extends LocationEvent {
+  final bool isEnabled;
+  const LocationServiceStatusChangedEvent({required this.isEnabled});
+
+  @override
+  List<Object> get props => [isEnabled];
+}

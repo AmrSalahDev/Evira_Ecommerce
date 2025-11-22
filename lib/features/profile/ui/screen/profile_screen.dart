@@ -81,7 +81,9 @@ class _ProfileScreenState extends State<ProfileScreen>
             CustomListTile(
               title: EviraLang.of(context).address,
               svgPath: Assets.icons.locationOutline.path,
-              onTap: () {},
+              onTap: () {
+                context.push(AppPaths.address);
+              },
             ),
             CustomListTile(
               title: EviraLang.of(context).notification,

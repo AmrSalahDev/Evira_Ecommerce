@@ -11,7 +11,17 @@ class AddressRemoteDatasourceImpl implements AddressRemoteDatasource {
   Future<void> addAddress(AddressModel address) async {
     final userId = supabase.auth.currentUser?.id;
     if (userId == null) return;
-    await supabase.from('addresses').insert(address.toJson(userId));
+    //await supabase.from('addresses').insert(address.toJson(userId));
+
+    await supabase.rpc(
+      'add_new_address', // The name of the function in the database
+      params: {
+        'p_user_id': userId,
+        'p_name': address.name,
+        'p_address': address.address,
+        'p_is_default': address.isDefault,
+      },
+    );
   }
 
   @override
@@ -23,6 +33,7 @@ class AddressRemoteDatasourceImpl implements AddressRemoteDatasource {
         .from('addresses')
         .select()
         .eq('user_id', userId)
+        .order('is_default', ascending: false)
         .order('created_at', ascending: false);
 
     return (response as List)

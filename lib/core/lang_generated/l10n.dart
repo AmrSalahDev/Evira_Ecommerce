@@ -1293,6 +1293,131 @@ class EviraLang {
       args: [],
     );
   }
+
+  /// `Location services are disabled.`
+  String get locationServicesDisabled {
+    return Intl.message(
+      'Location services are disabled.',
+      name: 'locationServicesDisabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location permission is denied.`
+  String get locationPermissionDenied {
+    return Intl.message(
+      'Location permission is denied.',
+      name: 'locationPermissionDenied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General Notification`
+  String get general_notification {
+    return Intl.message(
+      'General Notification',
+      name: 'general_notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sound`
+  String get sound {
+    return Intl.message('Sound', name: 'sound', desc: '', args: []);
+  }
+
+  /// `Vibrate`
+  String get vibrate {
+    return Intl.message('Vibrate', name: 'vibrate', desc: '', args: []);
+  }
+
+  /// `Promo & Discount`
+  String get promoAndDiscount {
+    return Intl.message(
+      'Promo & Discount',
+      name: 'promoAndDiscount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payments`
+  String get payments {
+    return Intl.message('Payments', name: 'payments', desc: '', args: []);
+  }
+
+  /// `Cashback`
+  String get cashback {
+    return Intl.message('Cashback', name: 'cashback', desc: '', args: []);
+  }
+
+  /// `App Updates`
+  String get appUpdates {
+    return Intl.message('App Updates', name: 'appUpdates', desc: '', args: []);
+  }
+
+  /// `New service available`
+  String get newServiceAvailable {
+    return Intl.message(
+      'New service available',
+      name: 'newServiceAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Tips Available`
+  String get newTipsAvailable {
+    return Intl.message(
+      'New Tips Available',
+      name: 'newTipsAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add New Card`
+  String get addNewCard {
+    return Intl.message('Add New Card', name: 'addNewCard', desc: '', args: []);
+  }
+
+  /// `CVV`
+  String get cvv {
+    return Intl.message('CVV', name: 'cvv', desc: '', args: []);
+  }
+
+  /// `Card Number`
+  String get cardNumber {
+    return Intl.message('Card Number', name: 'cardNumber', desc: '', args: []);
+  }
+
+  /// `Expiry Date`
+  String get expiryDate {
+    return Intl.message('Expiry Date', name: 'expiryDate', desc: '', args: []);
+  }
+
+  /// `Card Name`
+  String get cardName {
+    return Intl.message('Card Name', name: 'cardName', desc: '', args: []);
+  }
+
+  /// `Card Holder name`
+  String get cardHolderName {
+    return Intl.message(
+      'Card Holder name',
+      name: 'cardHolderName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Black Code`
+  String get blackcode {
+    return Intl.message('Black Code', name: 'blackcode', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

@@ -1,6 +1,11 @@
+import 'package:evira_e_commerce/core/routes/app_router.dart';
+import 'package:evira_e_commerce/core/routes/args/no_internet_screen_args.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
+import 'package:evira_e_commerce/shared/cubits/network_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
@@ -17,6 +22,10 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
 
   bool get addPadding => true;
 
+  String? get routeName => null;
+
+  bool get resizeToAvoidBottomInset => true;
+
   Widget? buildBottomNavigationBar() => null;
 
   List<Widget>? buildActions() => null;
@@ -32,64 +41,78 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: showAppBar
-          ? AppBar(
-              title: title.isNotEmpty
-                  ? Text(
-                      title,
-                      style: GoogleFonts.urbanist(
-                        fontSize: 24.sp,
-                        fontWeight: FontWeight.w600,
-                        color: context.textColor,
-                      ),
-                    )
-                  : null,
-              leading: showBackButton
-                  ? IconButton(
-                      padding: EdgeInsets.zero,
-                      iconSize: 30.h,
+    return BlocListener<NetworkCubit, NetworkState>(
+      listener: (context, state) {
+        if (state is NetworkDisconnected) {
+          if (routeName != null && routeName!.isNotEmpty) {
+            context.go(
+              AppPaths.noInternet,
+              extra: NoInternetScreenArgs(targetPath: routeName!),
+            );
+          }
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
+        appBar: showAppBar
+            ? AppBar(
+                title: title.isNotEmpty
+                    ? Text(
+                        title,
+                        style: GoogleFonts.urbanist(
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.w600,
+                          color: context.textColor,
+                        ),
+                      )
+                    : null,
+                leading: showBackButton
+                    ? IconButton(
+                        padding: EdgeInsets.zero,
+                        iconSize: 30.h,
 
-                      constraints: BoxConstraints(
-                        minWidth: 48.h,
-                        minHeight: 48.h,
-                      ),
-                      color: context.iconColor,
-                      icon: const Icon(Icons.arrow_back),
-                      onPressed: () {
-                        if (Navigator.canPop(context)) Navigator.pop(context);
-                      },
-                    )
-                  : null,
-              actions: buildActions(),
+                        constraints: BoxConstraints(
+                          minWidth: 48.h,
+                          minHeight: 48.h,
+                        ),
+                        color: context.iconColor,
+                        icon: const Icon(Icons.arrow_back),
+                        onPressed: () {
+                          if (Navigator.canPop(context)) Navigator.pop(context);
+                        },
+                      )
+                    : null,
+                actions: buildActions(),
 
-              backgroundColor: context.backgroundColor,
-              elevation: 0,
-              surfaceTintColor: context.backgroundColor,
-              toolbarHeight: 80.h,
-            )
-          : null,
-      body: SafeArea(
-        child: Padding(
-          padding: addPadding
-              ? EdgeInsets.only(left: 20.w, right: 20.w)
-              : EdgeInsets.zero,
-          child: buildBody(context),
+                backgroundColor: context.backgroundColor,
+                elevation: 0,
+                surfaceTintColor: context.backgroundColor,
+                toolbarHeight: 80.h,
+              )
+            : null,
+        body: SafeArea(
+          child: Padding(
+            padding: addPadding
+                ? EdgeInsets.only(left: 20.w, right: 20.w)
+                : EdgeInsets.zero,
+            child: buildBody(context),
+          ),
         ),
-      ),
-      bottomNavigationBar: applyPaddingForBottomNavigationBar
-          ? Padding(
-              padding: EdgeInsets.only(
-                left: 20.w,
-                right: 20.w,
-                bottom: MediaQuery.of(
-                  context,
-                ).viewInsets.bottom, // keyboard height
-              ),
 
-              child: buildBottomNavigationBar(),
-            )
-          : buildBottomNavigationBar(),
+        bottomNavigationBar: applyPaddingForBottomNavigationBar
+            ? Padding(
+                padding: EdgeInsets.only(
+                  left: 20.w,
+                  right: 20.w,
+                  bottom: MediaQuery.of(
+                    context,
+                  ).viewInsets.bottom, // keyboard height
+                ),
+
+                child: buildBottomNavigationBar(),
+              )
+            : buildBottomNavigationBar(),
+      ),
     );
   }
 }
